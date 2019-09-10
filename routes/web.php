@@ -76,3 +76,12 @@ Route::get('/quotationRequestCancel/{id}','QuotationRequestController@cancel');
 Route::get('/quotationRequestCancelUser/{id}','QuotationRequestController@cancelUser');
 
 
+
+//payment
+
+Route::get('/pay','TransactionController@create');
+Route::post('/pay','TransactionController@store');
+Route::post('/payresult','TransactionController@store');
+
+
+
