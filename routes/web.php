@@ -83,5 +83,14 @@ Route::get('/pay','TransactionController@create');
 Route::post('/pay','TransactionController@store');
 Route::post('/payresult','TransactionController@store');
 
+//invoice
+Route::get('/createInvoice','InvoiceController@create');
+Route::post('/createInvoice','InvoiceController@store');
+Route::get('/showInvoice','InvoiceController@show');
+Route::get('/showInvoiceList','InvoiceController@show');
+
+
+
+
 
 
