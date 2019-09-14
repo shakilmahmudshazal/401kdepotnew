@@ -34,7 +34,7 @@ class InvoiceController extends Controller
 
         if(empty($quotation->invoice))
         {
-            invoice::create([
+            $invoice= invoice::create([
             'quotation_request_id'=>$id,
             'amount'=>$request['amount'],
             'issueDate'=>$request['issueDate'],
@@ -56,7 +56,7 @@ class InvoiceController extends Controller
 
          
 
-         return redirect('/showInvoice/'.$quotation->invoice->id);
+         return redirect('/showInvoice/'.$invoice->id);
 
     }
 
