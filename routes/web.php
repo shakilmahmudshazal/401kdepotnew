@@ -79,14 +79,14 @@ Route::get('/quotationRequestCancelUser/{id}','QuotationRequestController@cancel
 
 //payment
 
-Route::get('/pay','TransactionController@create');
-Route::post('/pay','TransactionController@store');
-Route::post('/payresult','TransactionController@store');
+Route::get('/pay/{id}','TransactionController@create');
+Route::post('/pay/{id}','TransactionController@chargeCreditCard');
+Route::get('/payresult/{id}','TransactionController@result');
 
 //invoice
-Route::get('/createInvoice','InvoiceController@create');
-Route::post('/createInvoice','InvoiceController@store');
-Route::get('/showInvoice','InvoiceController@show');
+Route::get('/createInvoice/{id}','InvoiceController@create');
+Route::post('/createInvoice/{id}','InvoiceController@store');
+Route::get('/showInvoice/{id}','InvoiceController@show');
 Route::get('/showInvoiceList','InvoiceController@show');
 
 

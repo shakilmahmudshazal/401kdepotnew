@@ -4,12 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class transaction extends Model
+class credit extends Model
 {
     //
     protected $guarded=[];
-    public function invoice()
+
+    public function user()
     {
-        return $this->belongsTo('App\invoice');
+    	# code...
+    	return $this->belongsTo('App\User');
     }
 }

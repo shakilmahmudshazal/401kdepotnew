@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-<form method="post" action="/pay">
+<form method="post" action="/pay/{{$invoice->id}}">
 	@csrf
 
 	<div>
@@ -19,8 +19,15 @@
 		
 
 	</div>
+	<div>
+		<label>CVV:</label>
+		<input type="text" name="code" >
 
-	<input type="submit" name="submit">
+
+
+	</div>
+
+	<input type="submit" name="submit" value="confirm">
 	
 	
 

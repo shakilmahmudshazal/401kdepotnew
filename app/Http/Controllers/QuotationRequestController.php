@@ -62,6 +62,8 @@ class QuotationRequestController extends Controller
 
          ]);
 
+         
+
 
           return Redirect::back()->with('message','Operation Successful !');
 

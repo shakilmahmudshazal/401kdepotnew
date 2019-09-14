@@ -17,5 +17,9 @@ class quotationRequest extends Model
     {
         return $this->belongsTo('App\quotationStatus');
     }
+    public function invoice()
+    {
+      return $this->hasOne('App\invoice');
+    }
 
 }

@@ -45,6 +45,11 @@ class User extends Authenticatable
     {
       return $this->hasOne('App\userProfilePic');
     }
+
+    public function credit()
+    {
+      return $this->hasOne('App\credit');
+    }
     
     public function userBasic()
     {
