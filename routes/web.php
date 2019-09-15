@@ -88,6 +88,13 @@ Route::get('/createInvoice/{id}','InvoiceController@create');
 Route::post('/createInvoice/{id}','InvoiceController@store');
 Route::get('/showInvoice/{id}','InvoiceController@show');
 Route::get('/showInvoiceList','InvoiceController@show');
+//place
+Route::get('/placeCreate','PlaceController@create');
+Route::post('/savePlace','PlaceController@store');
+Route::get('/viewPlace','PlaceController@view');
+
+ Route::get('/autocomplete', 'AutocompleteController@index');
+Route::post('/autocomplete/fetch', 'AutocompleteController@fetch')->name('autocomplete.fetch');
 
 
 

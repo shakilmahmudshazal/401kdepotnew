@@ -9,6 +9,17 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
+        <!-- for ajax -->
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style type="text/css">
+   .box{
+    width:600px;
+    margin:0 auto;
+   }
+  </style>
+
         <!-- Styles -->
         <style>
             html, body {
@@ -131,11 +142,16 @@
   <!-- <label for="email">Email:</label>
  -->  <input type="text" id="search" placeholder="Search" name="service">
   <!-- <label for="pwd">Password:</label> -->
-  <input type="text" id="place" placeholder="City/state" name="place">
+  <input type="text" id="place" placeholder="City/state" name="place" id="place">
+  <!-- <input type="text" name="country_name" id="country_name" class="form-control input-lg" placeholder="Enter Country Name" /> -->
+
   <!-- <label>
     <input type="checkbox" name="remember"> Remember me
   </label> -->
   <button type="submit">Search</button>
+  <br>
+    <!-- <div id="countryList"> -->
+      <div id="placeList">
 </form>
 
                <!--  <div class="links">
@@ -152,3 +168,30 @@
         </div>
     </body>
 </html>
+<script>
+$(document).ready(function(){
+
+ $('#place').keyup(function(){ 
+        var query = $(this).val();
+        if(query != '')
+        {
+         var _token = $('input[name="_token"]').val();
+         $.ajax({
+          url:"{{ route('autocomplete.fetch') }}",
+          method:"POST",
+          data:{query:query, _token:_token},
+          success:function(data){
+           $('#placeList').fadeIn();  
+                    $('#placeList').html(data);
+          }
+         });
+        }
+    });
+
+    $(document).on('click', 'li', function(){  
+        $('#place').val($(this).text());  
+        $('#placeList').fadeOut();  
+    });  
+
+});
+</script>
