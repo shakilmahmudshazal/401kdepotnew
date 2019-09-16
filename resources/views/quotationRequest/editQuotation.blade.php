@@ -3,6 +3,9 @@
 	<label>you need help with: </label>
                     <input type="text" name="subject" value="{{$request->subject}}" required>
                     <br>
+                    <label>User id: </label>
+                    <input type="text" name="user_id" value="{{$request->user_id}}" required>
+                    <br>
                     <label>Details: </label>
                     <textarea rows="5" cols="50" name="details" required>{{$request->details}}</textarea>
                     <br>

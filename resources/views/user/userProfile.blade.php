@@ -22,6 +22,7 @@
                        <li> Name:{{ $user->name}} </li>
                        @if(!empty($user->userBasic))
                        <li> Email:{{$user->email}}</li>
+                       <li> Credit :{{$user->credit->credit}}</li>
                        <li> Username:{{$user->userBasic->username}}</li>
                        <li> City:{{$user->userBasic->city}}</li>
                        <li> State:{{$user->userBasic->state}}</li>

@@ -15,7 +15,7 @@ class CreateQuotationRequestsTable extends Migration
     {
         Schema::create('quotation_requests', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('user_id');
+            $table->integer('user_id')->nullable();
             $table->string('name');
             $table->string('email');
             $table->string('phone');
@@ -24,6 +24,7 @@ class CreateQuotationRequestsTable extends Migration
             $table->string('state');
             $table->string('zipcode');
             $table->string('details');
+            $table->string('file')->nullable();
             $table->integer('status_id')->default(1);
             $table->timestamps();
         });

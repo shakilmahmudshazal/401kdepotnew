@@ -79,6 +79,7 @@ class QuotationRequestController extends Controller
     public function edit($id)
     {
         $request= quotationRequest::find($id);
+        $request->user_id=request('user_id');
         $request->subject=request('subject');
         $request->details=request('details');
         $request->name=request('name');

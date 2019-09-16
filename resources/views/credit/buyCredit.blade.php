@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-<form method="post" action="/pay/{{$invoice->id}}">
+<form method="post" action="/buyCredit/{{auth()->id()}}">
 	@csrf
 	<div>
 		<label>Credit Points:</label>

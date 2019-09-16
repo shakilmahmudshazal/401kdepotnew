@@ -74,6 +74,11 @@ Route::post('/edit-quotation/{id}','QuotationRequestController@edit');
 Route::get('/quotationRequestApproved/{id}','QuotationRequestController@approve');
 Route::get('/quotationRequestCancel/{id}','QuotationRequestController@cancel');
 Route::get('/quotationRequestCancelUser/{id}','QuotationRequestController@cancelUser');
+//null
+
+Route::post('/saveQuotaRequest','QuotationRequestNullController@store');
+
+
 
 
 
@@ -96,6 +101,9 @@ Route::get('/viewPlace','PlaceController@view');
  Route::get('/autocomplete', 'AutocompleteController@index');
 Route::post('/autocomplete/fetch', 'AutocompleteController@fetch')->name('autocomplete.fetch');
 
+//credit
+Route::get('/buyCredit','CreditController@create');
+Route::post('/buyCredit/{id}','CreditController@chargeCreditCard');
 
 
 
