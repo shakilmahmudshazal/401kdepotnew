@@ -15,16 +15,9 @@
                     @endif
 
                    <ul type="none">
-                    @if(!empty($user->userProfilePic))
                        <li>  <img class="img-responsive img-circle"  src="{{asset('uploads/profilePic/'.$user->userProfilePic->profile_pic)}}" style="height: 200px;width: 200px" alt="Avatar">  </li>
-                       @endif
-
                        <li> Name:{{ $user->name}} </li>
-                       @if(!empty($user->userBasic))
                        <li> Email:{{$user->email}}</li>
-                       @if(!empty($user->credit))
-                       <li> Credit :{{$user->credit->credit}}</li>
-                       @endif
                        <li> Username:{{$user->userBasic->username}}</li>
                        <li> City:{{$user->userBasic->city}}</li>
                        <li> State:{{$user->userBasic->state}}</li>
@@ -35,14 +28,9 @@
                            <li> Firm:{{$user->userBasic->firm}}</li>
                            <li> Firm Website:{{$user->userBasic->firmWebsite}}</li>
                            <li> CRD Number:{{$user->userBasic->crdNumber}}</li>
-                           @endif
-                            @if(!empty($user->userDetails))
-                            <li> 
-                              <h1>Details:</h1>{{$user->userDetails->details}}</li>
-                             <li><h1>Planning Process:</h1> {{$user->userDetails->planningProcess}}</li>
-                              <li> <h1>Pricing Model:</h1>{{$user->userDetails->pricingModel }}</li>
-
-                              @endif
+                            <li> Details:{{$user->userDetails->details}}</li>
+                             <li> Planning Process:{{$user->userDetails->planningProcess}}</li>
+                              <li> Pricing Model:{{$user->userDetails->pricingModel }}</li>
 
 
 
@@ -54,8 +42,6 @@
 
 
                    </ul>
-
-                    @if(count($user->userEducation) > 0)
                    <h3>Education</h3>
                    <table border="2">
                      <tr>
@@ -66,9 +52,7 @@
 
 
                      </tr>
-                     <!-- Imran -->
-                    @if(count($user->userEducation) > 0)
-                     @foreach($userEducation as $education)
+                     @foreach($user->userEducation as $education)
                      <tr>
                        <td>{{$education->degree}}</td>
                        <td>{{$education->school}}</td>
@@ -76,16 +60,13 @@
                        <td>{{$education->graduationDate}}</td>
 
                      </tr>
+
+
                       @endforeach
-                      @endif
-                      <!-- imran -->
 
 
 
                    </table>
-                   @endif
-
-                    @if(count($user->userFinancialExam) > 0)
 
 
                    <h3>Financial Examination</h3>
@@ -98,21 +79,21 @@
 
 
                      </tr>
-                   @if(count($user->userFinancialExam) > 0)
-                     @foreach($userFinancialExam as $exam)
-
+                     @foreach($user->userFinancialExam as $exam)
                      <tr>
                        <td>{{$exam->name}}</td>
                        <td>{{$exam->exam_code}}</td>
-                       <td>{{$exam->passed_date}}</td> 
+                       <td>{{$exam->passed_date}}</td>
+                       
+
                      </tr>
+
+
                       @endforeach
-                      @endif
+
+
 
                    </table>
-                    @endif
-
-                    @if(count($user->userProfessionalDesignation) > 0)
 
                    <h3>User Professional Designation</h3>
                    <table border="2">
@@ -124,12 +105,13 @@
 
 
                      </tr>
-
-                     
                      @foreach($user->userProfessionalDesignation as $designation)
                      <tr>
                        <td>{{$designation->title}}</td>
                        <td>{{$designation->short_description}}</td>
+                       
+                       
+
                      </tr>
 
 
@@ -138,10 +120,6 @@
 
 
                    </table>
-                   @endif
-
-
-                   @if(count($user->userWork) > 0)
 
 
                    <h3>Working History</h3>
@@ -162,7 +140,8 @@
                        <td>{{$work->location}}</td>
                        <td>{{$work->startingDate}}- @if($work->currentlyWorking==0){{$work->endDate}} @else current @endif </td>
                        <td>
-                         <?php 
+
+                        <?php 
 
                            if($work->currentlyWorking==0)
                            {
@@ -187,19 +166,57 @@
 
                            } 
                              ?>
-
+                         
 
                        </td>
+
+                       
+                       
 
                      </tr>
 
 
                       @endforeach
-                      @endif
 
 
 
                    </table>
+                   <br>
+                   <h1>Send Request</h1>
+
+                   <form action="/sendQuotaionRequest/{{$user->id}}" method="post">
+                    @csrf
+
+                    <label>you need help with: </label>
+                    <input type="text" name="subject" required>
+                    <br>
+                    <label>Details: </label>
+                    <textarea rows="5" cols="50" name="details" required></textarea>
+                    <br>
+                    <label>your Name: </label>
+                    <input type="text" name="name" required>
+                    <br>
+                    <label>your Email </label>
+                    <input type="email" name="email" required>
+                    <br>
+                    <label>your Phone: </label>
+                    <input type="text" name="phone" required>
+                    <br>
+                    <label>your City: </label>
+                    <input type="text" name="city" required>
+                    <br>
+                    <label>your state: </label>
+                    <input type="text" name="state" required>
+                    <br>
+                    <label>your Zip Code: </label>
+                    <input type="text" name="zipcode" required>
+                    <br>
+                    <button type="Submit">Submit</button>
+                     
+
+
+
+                   </form>
 
 
 

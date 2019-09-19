@@ -1,0 +1,30 @@
+#advisor-background {
+    background-image: url(../images/advisor-headerbg-mini.jpg);
+    min-height: 260px;
+    margin-top: 60px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 50px 0;
+}
+
+#advisor-url .breadcrumb {
+    background-color: white;
+}
+
+#each-advisor {
+    padding-bottom: 20px;
+}
+
+#filtering {
+    padding: 20px 0;
+}
+
+#filtering h2,
+#filtering h4 {
+    font-family: lato;
+    color: #5A5A5A;
+}
+#filtering .jumbotron{
+    padding: 20px;
+}

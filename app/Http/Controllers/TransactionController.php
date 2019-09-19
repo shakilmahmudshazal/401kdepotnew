@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\invoice;
 use App\transaction;
+use App\User;
 //require 'vendor/autoload.php'; 
 use net\authorize\api\contract\v1 as AnetAPI;
 use net\authorize\api\controller as AnetController;
@@ -30,6 +31,8 @@ class TransactionController extends Controller
 
    public function chargeCreditCard($id)
 {
+    $user= User::find(auth()->id());
+
     $invoice= invoice::find($id);
     $amount=$invoice->amount;
   
@@ -58,25 +61,25 @@ class TransactionController extends Controller
 
     // Create order information
     $order = new AnetAPI\OrderType();
-    $order->setInvoiceNumber("10101");
-    $order->setDescription("Golf Shirts");
+    $order->setInvoiceNumber($invoice->id);
+    $order->setDescription("Pay for Qutoation Request");
 
     // Set the customer's Bill To address
     $customerAddress = new AnetAPI\CustomerAddressType();
-    $customerAddress->setFirstName("Ellen");
-    $customerAddress->setLastName("Johnson");
-    $customerAddress->setCompany("Souveniropolis");
-    $customerAddress->setAddress("14 Main Street");
-    $customerAddress->setCity("Pecan Springs");
-    $customerAddress->setState("TX");
-    $customerAddress->setZip("44628");
+    $customerAddress->setFirstName($user->name);
+    // $customerAddress->setLastName("Johnson");
+    $customerAddress->setCompany($user->userBasic->firm);
+    // $customerAddress->setAddress("14 Main Street");
+    $customerAddress->setCity($user->userBasic->city);
+    $customerAddress->setState($user->userBasic->state);
+    $customerAddress->setZip($user->userBasic->zipCode);
     $customerAddress->setCountry("USA");
 
     // Set the customer's identifying information
     $customerData = new AnetAPI\CustomerDataType();
     $customerData->setType("individual");
     $customerData->setId("99999456654");
-    $customerData->setEmail("EllenJohnson@example.com");
+    $customerData->setEmail($user->email);
 
     // Add values for transaction settings
     $duplicateWindowSetting = new AnetAPI\SettingType();
@@ -134,6 +137,7 @@ class TransactionController extends Controller
 
 
                 ]);
+                    return redirect('/payresult/'.$transaction->id);
 
 
                     # code...
@@ -182,7 +186,7 @@ class TransactionController extends Controller
     $tcode=$tresponse->getResponseCode();
     $status='not defined';
     // return view('transaction.resultTransaction',compact('transaction'));
-    return redirect('/payresult/'.$transaction->id);
+    return redirect('/payresult/'.$invoice->transaction->id);
 
 
 }

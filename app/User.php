@@ -65,6 +65,10 @@ class User extends Authenticatable
     {
       return $this->hasMany('App\userServiceRelation');
     }
+     public function notificationUser()
+    {
+      return $this->hasMany('App\notificationUser');
+    }
     public function userWork()
     {
       return $this->hasMany('App\userWork');

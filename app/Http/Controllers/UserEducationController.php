@@ -22,25 +22,17 @@ class UserEducationController extends Controller
         ]);
         $user = User::find(auth()->id());
 
-        DB::beginTransaction();
-        try {
-            $save= userEducation::insertGetId([
+        
+            $userEducation= userEducation::insert([
                 'user_id' => $user->id,
                 'degree'=>$request->degree,
                 'school'=>$request->school,
                 'major'=>$request->major,
                 'graduationDate' => $request->graduationDate,
             ]);
-            if($save){
-                DB::commit();
-            }else {
-                DB::rollback();
-            }
+            
 
-        }catch(\Exception $e){
-            DB::rollback();
-            //return $e;
-        }
+        
 
         return Redirect::to("/editProfile");
         

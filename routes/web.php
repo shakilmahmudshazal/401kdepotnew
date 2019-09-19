@@ -14,7 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/logout', 'UserController@logout');
+
 Route::get('/searchPage', 'searchController@create');
 // Route::post('/search', 'searchController@search');
 Route::get('/search', 'searchController@search');
@@ -24,12 +24,13 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
-
+Route::get('/logout', 'UserController@logout');
 Route::get('/home', 'HomeController@index')->name('home');
 
 
 Auth::routes();
-
+//user
+Route::get('/allUserList', 'UserController@allUserList');
 Route::get('/showProfile', 'UserController@showProfile');
 Route::get('/editProfile', 'UserController@editProfile');
 Route::post('/updateProfile', 'UserController@updateProfile');
@@ -74,11 +75,6 @@ Route::post('/edit-quotation/{id}','QuotationRequestController@edit');
 Route::get('/quotationRequestApproved/{id}','QuotationRequestController@approve');
 Route::get('/quotationRequestCancel/{id}','QuotationRequestController@cancel');
 Route::get('/quotationRequestCancelUser/{id}','QuotationRequestController@cancelUser');
-//null
-
-Route::post('/saveQuotaRequest','QuotationRequestNullController@store');
-
-
 
 
 

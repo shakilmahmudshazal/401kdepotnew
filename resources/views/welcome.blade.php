@@ -1,218 +1,693 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en">
 
-        <title>401kdepot</title>
+<head>
+    <meta charset="UTF-8">
+    <title>401k Depot</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
 
-        <!-- for ajax -->
-          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <style type="text/css">
-   .box{
-    width:600px;
-    margin:0 auto;
-   }
-  </style>
+</head>
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
+<body>
 
-            .full-height {
-                height: 100vh;
-            }
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
+    <header>
 
-            .position-ref {
-                position: relative;
-            }
+        @include('layouts.navbar')
 
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
+    </header>
+    <section id="home">
+        <div class="content">
+            <h1 class="text-center text-white">Plan wisely. Live fully.</h1>
+            <h4 class="text-center text-white">Find and connect with the right financial advisor for you.</h4><br>
+        </div>
+        <div class="advisor-heaing">
+            <p>Browse Advisors</p>
+        </div>
 
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-            .form-inline {  
-  display: flex;
-  flex-flow: row wrap;
-  align-items: center;
-}
-
-.form-inline label {
-  margin: 5px 10px 5px 0;
-}
-
-.form-inline input {
-  vertical-align: middle;
-  margin: 5px 10px 5px 0;
-  padding: 10px;
-  background-color: #fff;
-  border: 1px solid #ddd;
-}
-
-.form-inline button {
-  padding: 10px 20px;
-  background-color: dodgerblue;
-  border: 1px solid #ddd;
-  color: white;
-  cursor: pointer;
-}
-
-.form-inline button:hover {
-  background-color: royalblue;
-}
-
-@media (max-width: 800px) {
-  .form-inline input {
-    margin: 10px 0;
-  }
-  
-  .form-inline {
-    flex-direction: column;
-    align-items: stretch;
-  }
-}
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
-          
-
-            <div class="content">
-                <div class="title m-b-md">
-                    401kdepot
-                </div>
-
-    <form class="form-inline" method="get" action="/search">
-       @csrf
-  <!-- <label for="email">Email:</label>
- -->  <input type="text" id="search" placeholder="Search" name="service">
-  <!-- <label for="pwd">Password:</label> -->
-  <input type="text" id="place" placeholder="City/state" name="place" id="place">
-  <!-- <input type="text" name="country_name" id="country_name" class="form-control input-lg" placeholder="Enter Country Name" /> -->
-
-  <!-- <label>
-    <input type="checkbox" name="remember"> Remember me
-  </label> -->
-  <button type="submit">Search</button>
-  <br>
-    <!-- <div id="countryList"> -->
-      <div id="placeList">
-</form>
-
-               <!--  <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div> -->
-            </div>
-            <br>
-            <h1>Submit your request. We will find the best advisor for you</h1>
-            <form action="/saveQuotaRequest" method="post">
+        <div class="browse-advisor">
+            <div class="container">
+                <form class="form-view" method="get" action="/search">
                     @csrf
-
-                    <label>you need help with: </label>
-                    <input type="text" name="subject" required>
-                    <br>
-                    <label>Details: </label>
-                    <textarea rows="5" cols="50" name="details" required></textarea>
-                    <br>
-                    <label>your Name: </label>
-                    <input type="text" name="name" required>
-                    <br>
-                    <label>your Email </label>
-                    <input type="email" name="email" required>
-                    <br>
-                    <label>your Phone: </label>
-                    <input type="text" name="phone" required>
-                    <br>
-                    <label>your City: </label>
-                    <input type="text" name="city" required>
-                    <br>
-                    <label>your state: </label>
-                    <input type="text" name="state" required>
-                    <br>
-                    <label>your Zip Code: </label>
-                    <input type="text" name="zipcode" required>
-                    <br>
-                    <button type="Submit">Submit</button>
-                     
+                    <div class="row">
+                        <div class="col-12 col-md-4">
+                            <input type="text" class="form-control" placeholder="Search" name="service">
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <input type="text" class="form-control" placeholder="City/State" id="place" name="place">
+                            <div id="placeList"></div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <input type="submit" class="form-control btn btn-success" id="submit" value="SEARCH" name="email">
+                        </div>
+                    </div>
 
 
+                </form>
+            </div>
+        </div>
+    </section>
 
-                   </form>
+
+    <!--    pop-up sign up Start-->
+
+
+    <div class="modal fade" id="mySignUpModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content" style="background-color: white">
+                <div class="modal-header">
+                    <div style="margin: 10px;width: 100%;">
+                        <p class="text-center" style="font-size: 32px;color: #18212E; font-weight: bolder">Sign Up</p>
+                    </div>
+
+                    <button type="button" class="close" data-dismiss="modal" style="font-size: 52px; color: #b4bac4;margin-top: -4px;">&times;</button>
+
+                </div>
+                <div class="modal-body">
+
+                    <form method="POST" action="{{ route('register') }}">
+                        @csrf
+                        <div class="input-section">
+                            <div class="form-group">
+                                <input type="text" style="border: none; border-radius: 0; background-color: #F0F0F0; color: black" class="form-control" name="name" placeholder="Your name">
+                            </div>
+                        </div>
+                        <div class="input-section">
+                            <div class="form-group">
+                                <input type="text" style="border: none; border-radius: 0; background-color: #F0F0F0; color: black" class="form-control" name="username" placeholder=" username">
+                            </div>
+                        </div>
+                        <div class="input-section">
+                            <div class="form-group">
+                                <input type="email" style="border: none; border-radius: 0; background-color: #F0F0F0; color: black" class="form-control" name="email" placeholder="Email address">
+                            </div>
+                        </div>
+                        <div class="input-section">
+                            <div class="form-group">
+                                <input type="text" style="border: none; border-radius: 0; background-color: #F0F0F0; color: black" class="form-control" name="city" placeholder=" city">
+                            </div>
+                        </div>
+                        <div class="input-section">
+                            <div class="form-group">
+                                <input type="text" style="border: none; border-radius: 0; background-color: #F0F0F0; color: black" class="form-control" name="state" placeholder=" State">
+                            </div>
+                        </div>
+                        <div class="input-section">
+                            <div class="form-group">
+                                <input type="text" style="border: none; border-radius: 0; background-color: #F0F0F0; color: black" class="form-control" name="zipcode" placeholder=" zipcode">
+                            </div>
+                        </div>
+                        <div class="input-section">
+                            <div class="form-group">
+                                <input type="password" style="border: none; border-radius: 0; background-color: #F0F0F0; color: black" class="form-control" name="password" placeholder="Password">
+                            </div>
+                        </div>
+                        <div class="input-section">
+                            <div class="form-group">
+                                <input type="password" style="border: none; border-radius: 0; background-color: #F0F0F0; color: black" class="form-control" id="password-confirm"name="password_confirmation" placeholder="Confirm Password">
+                            </div>
+                        </div>
+
+                        <p class="text-center" style="color: #6C757D">Already member? <a href="#" style="color: blue" data-toggle="modal" data-target="#myLoginModal" data-dismiss="modal">Log in</a></p>
+
+
+                        <div class="form-group">
+                            <input style="font-size: 14px;border: none;border-radius: 0;" type="submit" name="sign_up" value="Sign Up" class="btn btn-success form-control">
+                        </div>
+
+                        <p class="text-center" style="color: #6C757D">Or Sing up with</p>
+
+                        <div class="form-group">
+                            <div class="btn-group" style="width: 100%; ">
+                                <a href="#" class="btn btn-primary" style="width: 50%;font-size: 14px; border: none;border-radius: 0;"><i class="fa fa-facebook-official"></i> Facebook</a>
+                                <a href="#" class="btn btn-danger" style="width: 50%;font-size: 14px; border: none;border-radius: 0;"><i class="fa fa-envelope"></i> Gmail</a>
+                            </div>
+                        </div>
+
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!--    pop-up sign up End-->
+
+    <!--    .........................................-->
+    <!--    pop-up Login Start-->
+
+    <div class="modal fade" id="myLoginModal" role="dialog">
+        <div class="modal-dialog">
+
+            <div class="modal-content" style="background-color: white">
+                <div class="modal-header">
+                    <div style="margin: 10px;width: 100%;">
+                        <p class="text-center" style="font-size: 32px;color: #18212E; font-weight: bolder">Log in</p>
+                    </div>
+
+                    <button type="button" class="close" data-dismiss="modal" style="font-size: 52px; color: #b4bac4;margin-top: -4px;">&times;</button>
+
+                </div>
+                <div class="modal-body">
+
+                    <form method="POST" action="{{ route('login') }}">
+                        @csrf
+
+                        <div class="form-group">
+                            <input style="border: none; border-radius: 0; background-color: #F0F0F0; color: black" type="text" name="email" class="form-control" placeholder="Email address or phone">
+                        </div>
+                        <div class="form-group">
+                            <input style="border: none; border-radius: 0; background-color: #F0F0F0; color: black" type="password" name="password" class="form-control" placeholder="Password">
+                        </div>
+
+                        <p class="text-center" style="color: #6C757D">Haven't any account? <a style="color: blue" href="#" data-toggle="modal" data-target="#mySignUpModal" data-dismiss="modal">Sign Up</a></p>
+                        <div class="form-group">
+                            <input style="font-size: 14px;border: none;border-radius: 0;" type="submit" name="login" value="Log in" class="btn btn-success form-control">
+                        </div>
+
+                        <p class="text-center" style="color: #6C757D">Or log in with</p>
+
+                        <div class="form-group">
+                            <div class="btn-group" style="width: 100%; ">
+                                <a href="#" class="btn btn-primary" style="width: 50%;font-size: 14px; border: none;border-radius: 0;"><i class="fa fa-facebook-official"></i> Facebook</a>
+                                <a href="#" class="btn btn-danger" style="width: 50%;font-size: 14px; border: none;border-radius: 0;"><i class="fa fa-envelope"></i> Gmail</a>
+                            </div>
+                        </div>
+
+
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <!--    pop-up log in End-->
+
+    <!--    .........................................-->
+
+
+    <!-- slider section start-->
+
+
+    <div id="mySlider" class="carousel slide" data-ride="carousel">
+        <ul class="carousel-indicators">
+            <li data-target="#mySlider" data-slide-to="0" class="active"></li>
+            <li data-target="#mySlider" data-slide-to="1"></li>
+            <li data-target="#mySlider" data-slide-to="2"></li>
+        </ul>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-7 col-md-7">
+                            <h1>Why is hiring a financial advisor a smart investment?</h1>
+                            <h3>Because 1.3 million people will file for bankruptcy next year due to unforseen tragedies. Will you be one of them?</h3>
+                            <a href="" class="btn btn-success">CHECK TO FIND OUT</a>
+                        </div>
+                        <div class="col-lg-5 col-md-5">
+                            <img src="{{asset('images/homepage-carousel-insurance.jpg')}}" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-7 col-md-7">
+                            <h1>Why is hiring a financial advisor a smart investment?</h1>
+                            <h3>Because 1.3 million people will file for bankruptcy next year due to unforseen tragedies. Will you be one of them?</h3>
+                            <a href="#" class="btn btn-success">CHECK TO FIND OUT</a>
+                        </div>
+                        <div class="col-lg-5 col-md-5">
+                            <img src="{{asset('images/homepage-carousel-investment.jpg')}}" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-7 col-md-7">
+                            <h1>Why is hiring a financial advisor a smart investment?</h1>
+                            <h3 class="text-justify">Because 1.3 million people will file for bankruptcy next year due to unforseen tragedies. Will you be one of them?</h3>
+                            <a href="" class="btn btn-success">CHECK TO FIND OUT</a>
+                        </div>
+                        <div class="col-lg-5 col-md-5">
+                            <img src="{{asset('images/homepage-carousel-selfdirected.png')}}" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Slider section End-->
+
+    <!--
+    ...................................
+    ..........................
+-->
+
+
+
+
+
+    <!--    category section start-->
+
+    <section id="category">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 cat-item">
+                    <h1 class="text-center">FINANCIAL PLANNING</h1>
+                    <hr>
+                    <p class="text-center">Retirement Planning<br>
+                        Major Purchases or Life Events<br>
+                        Education Funding/Planning<br>
+                        Budgeting and Saving<br>
+                        Debt Reduction
+                    </p>
+
+                    <a class="btn btn-success form-control" data-toggle="modal" data-target="#myFinancialModal">LEARN MORE</a>
+                    <a class="btn btn-success form-control" href="#">FIND A FINANCIAL PLANNER</a>
+
+                </div>
+                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 cat-item">
+                    <h1 class="text-center">INVESTMENT MANAGEMENT</h1>
+                    <hr>
+                    <p class="text-center">Portfolio Review<br>
+                        Asset Allocation<br>
+                        Asset Location<br>
+                        401k Advice
+                    </p>
+
+                    <a class="btn btn-success form-control" data-toggle="modal" data-target="#myInvesmentModal">LEARN MORE</a>
+                    <a class="btn btn-success form-control" href="#">FIND A INVESTMENT MANAGER</a>
+
+                </div>
+
+                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 cat-item">
+                    <h1 class="text-center">RISK MANAGEMENT</h1>
+                    <hr>
+                    <p class="text-center">Insurance Planning<br>
+                        Income Protection<br>
+                        Income Replacement<br>
+                        Risk Identification and Mitigation
+                    </p>
+
+                    <a class="btn btn-success form-control" data-toggle="modal" data-target="#myRiskModal">LEARN MORE</a>
+                    <a class="btn btn-success form-control">FIND A RISK MANAGER</a>
+
+                </div>
+                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 cat-item">
+                    <h1 class="text-center">ESTATE AND TAX PLANNING</h1>
+                    <hr>
+                    <p class="text-center">Wealth Preservation<br>
+                        Asset Transfer<br>
+                        Charitable Giving<br>
+                        Tax-loss Harvesting
+                    </p>
+
+                    <a class="btn btn-success form-control" data-toggle="modal" data-target="#myTaxModal">LEARN MORE</a>
+                    <a class="btn btn-success form-control" href="#">FIND A FINANCIAL ADVISORS</a>
+
+                </div>
+
+            </div>
         </div>
 
 
+        <!--    Category Modal Start-->
+
+        <!--            Financial Modal-->
+        <div class="modal fade" id="myFinancialModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">FINANCIAL PLANNER</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <p>Financial Planning is the process through which an advisor helps you understand your financial goals and what steps are necessary to reach them. Financial Planning answers questions like:</p>
+                        <ul>
+                            <li>How much do I need to save to support my income needs when I retire?</li>
+                            <li>When should I begin taking my social security benefit?</li>
+                            <li>Should I put money into my 401k or my child’s college fund?</li>
+                        </ul>
+                        <a class="btn btn-success form-control" href="#">FIND A FINANCIAL PLANNER</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!--     Financial Modal End-->
+
+        <!--   Investment maneger Start-->
+
+        <div class="modal fade" id="myInvesmentModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">INVESTMENT MANAGER</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <p>
+                            Investment Management is a set of tasks advisors perform to help you keep the investments you own in line with your overall financial objectives. Investment Management services help you know:
+                        </p>
+
+                        <ul>
+                            <li>Are my investments appropriate for my goals?</li>
+                            <li>What changes should I make to my current portfolio?</li>
+                            <li>Am I adequately diversified across asset classes and industries?</li>
+                            <li>Am I paying too much in investment costs?</li>
+                        </ul>
+                        <a class="btn btn-success form-control" href="#">FIND A INVESTMENT MANAGER</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!--   Investment maneger End-->
+
+        <!--   Risk magnage ment Start-->
+        <div class="modal fade" id="myRiskModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Modal Heading</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <p>
+                            Investment Management is a set of tasks advisors perform to help you keep the investments you own in line with your overall financial objectives. Investment Management services help you know:
+                        </p>
+
+                        <ul>
+                            <li>Are my investments appropriate for my goals?</li>
+                            <li>What changes should I make to my current portfolio?</li>
+                            <li>Am I adequately diversified across asset classes and industries?</li>
+                            <li>Am I paying too much in investment costs?</li>
+                        </ul>
+                        <a class="btn btn-success form-control" href="#">FIND A RISK MANAGER</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!--   Risk management End-->
+
+        <!--   Estate and tax Start-->
+
+        <div class="modal fade" id="myTaxModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Modal Heading</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <p>
+                            Investment Management is a set of tasks advisors perform to help you keep the investments you own in line with your overall financial objectives. Investment Management services help you know:
+                        </p>
+
+                        <ul>
+                            <li>Are my investments appropriate for my goals?</li>
+                            <li>What changes should I make to my current portfolio?</li>
+                            <li>Am I adequately diversified across asset classes and industries?</li>
+                            <li>Am I paying too much in investment costs?</li>
+                        </ul>
+                        <a class="btn btn-success form-control" href="#">FIND A FINANCIAL ADVISORS</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
 
 
-    </body>
+        <!--   Estate and tax End-->
+
+
+
+
+
+        <!--   Category Modal End-->
+    </section>
+    <!--
+    .............................
+    category section End
+    .............................
+    -->
+
+
+    <!--    Testimonial section Start-->
+
+
+    <section id="testimonial">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-4">
+                    <div class="testimonial-content">
+                        <div class="content-background">
+                            <img src="{{asset('images/homepage-testimonial-bg.png')}}" class="" alt="">
+                            <div class="data">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <img src="{{asset('images/homepage-testimonial01.png')}}" alt="">
+                                    </div>
+                                    <div class="col-6">
+                                        <h3 class="">Name</h3>
+                                        <p>Fort Lauderdale</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content-details">
+                                <p class="text-justify" style="font-family: lato;">Our goal is to retire early and have the freedom to travel. Wealthminder made it easy for us to find the perfect advisor for our situation.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4">
+                    <div class="testimonial-content">
+                        <div class="content-background">
+                            <img src="{{asset('images/homepage-testimonial-bg.png')}}" class="" alt="">
+                            <div class="data">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <img src="{{asset('images/homepage-testimonial02.png')}}" alt="">
+                                    </div>
+                                    <div class="col-6">
+                                        <h3 class="">Name</h3>
+                                        <p>Fort Lauderdale</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content-details">
+                                <p class="text-justify" style="font-family: lato;">Our goal is to retire early and have the freedom to travel. Wealthminder made it easy for us to find the perfect advisor for our situation.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4">
+                    <div class="testimonial-content">
+                        <div class="content-background">
+                            <img src="{{asset('images/homepage-testimonial-bg.png')}}" class="" alt="">
+                            <div class="data">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <img src="{{asset('images/homepage-testimonial03.png')}}" alt="">
+                                    </div>
+                                    <div class="col-6">
+                                        <h3 class="">Name</h3>
+                                        <p>Fort Lauderdale</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content-details">
+                                <p class="text-justify" style="font-family: lato;">Our goal is to retire early and have the freedom to travel. Wealthminder made it easy for us to find the perfect advisor for our situation.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--    Testimonial section End-->
+
+    <!--    ..............................-->
+
+    <!--    Brand section Start-->
+
+    <section id="brand">
+        <div class="container">
+            <h4 class="text-center">We have matched thousands of clients with <br> advisors, and the press is starting to take notice.</h4>
+            <div class="row">
+                <div class="col-md-3"><img src="{{asset('images/logo-newsweek-white.png')}}" alt=""></div>
+                <div class="col-md-3"><img src="{{asset('images/logo-reuters-white.png')}}" alt=""></div>
+                <div class="col-md-3"><img src="{{asset('images/logo-yahoo-finance-white.png')}}" alt=""></div>
+                <div class="col-md-3"><img src="{{asset('images/logos-huffington-post-white.png')}}" alt=""></div>
+            </div>
+        </div>
+    </section>
+    <!--    Brand section End -->
+
+    <!--    ............................-->
+
+    <!--    Features Section Start-->
+
+    <section id="cities">
+        <div class="container">
+            <p class="text-center">FEATURED CITIES</p>
+            <p class="text-center">
+                <a href="#">Los Angeles</a> |
+                <a href="#">Los Angeles</a> |
+                <a href="#">Los Angeles</a> |
+                <a href="#">Los Angeles</a> |
+                <a href="#">Los Angeles</a> |
+                <a href="#">Los Angeles</a> |
+                <a href="#">Los Angeles</a> |
+                <a href="#">Los Angeles</a> |
+                <a href="#">Los Angeles</a> |
+                <a href="#">Los Angeles</a> |
+                <a href="#">Los Angeles</a></p>
+        </div>
+    </section>
+
+
+    <!--    Features section End -->
+
+    <!--    ............................-->
+
+    <!--    Footer Section Start-->
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="section-one">
+                        <a href="#">HOME</a>
+                        <a href="#">ABOUT US</a>
+                        <a href="#">FOR ADVISORS</a>
+                        <a href="#">FIND A FINANCIAL ADVISOR</a>
+                        <a href="#">401K PLAN INFORMATION</a>
+                        <a href="#">FAQ</a>
+                        <a href="#">NEWS</a>
+                        <a href="#">CONTACT US</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="section-two">
+                        <img src="{{asset('images/logo-rapidSSL.png')}}" alt="">
+                        <h4>We promise to keep your information safe and secure.</h4>
+                        <a href="#">Read our Safety &amp; Security Promise »</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="section-three">
+                        <h4>Ready to get started? Request proposals for help with your financial concerns.</h4>
+                        <a href="#" class="btn btn-success form-control">Get Started!</a>
+
+                        <a href="#" class="btn btn-light form-control">Log In</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="section-four">
+                        <img src="{{asset('images/logo_sprite2.png')}}" alt="">
+                        <h4>Wealthminder, 9th Floor,<br>
+                            1765 Greensboro Station Place,<br>
+                            McLean, VA 22102</h4>
+                        <a href="#">(571) 766-8021</a>
+                        <a href="#">info@wealthminder.com</a>
+                        <div>
+                        <iframe src="https://www.google.com/maps/embed?" width="240" height="120" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+                        </div>
+                        <div>
+                        <a href="#"><i class="fa fa-instagram" style="font-size:36px;color:#0083E0"></i></a>
+                        
+                        <a href="#"><i class="fa fa-twitter" style="font-size:36px;color:#0083E0"></i></a>
+                        
+                        <a href="#"><i class="fa fa-facebook-official" style="font-size:36px;color:#0083E0"></i></a>
+                        </div>
+                        
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <!--    Footer section End -->
+
+    <!--    ............................-->
+
+    <!--    Copyright Section Start-->
+
+    <section id="copyright">
+       <div class="container">
+           <div class="row">
+               <div class="col-md-5"><p class="text-center">&copy; 2017 Wealthminder, Inc. All Rights Reserved.</p></div>
+               <div class="col-md-7">
+                   <p class="text-center">
+                       <a href="#">Terms Of Use </a> | <a href="#"> Privacy Policy</a>
+                   </p>
+               </div>
+           </div>
+       </div>        
+    </section>
+
+
+
+
+    <!--    ............................-->
+
+    <!--    Copyright Section End-->
+
+</body>
+
 </html>
 <script>
 $(document).ready(function(){
 
  $('#place').keyup(function(){ 
         var query = $(this).val();
-        if(query != '')
+        if(1)
         {
          var _token = $('input[name="_token"]').val();
          $.ajax({

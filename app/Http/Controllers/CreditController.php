@@ -56,20 +56,20 @@ class CreditController extends Controller
 
     // Set the customer's Bill To address
     $customerAddress = new AnetAPI\CustomerAddressType();
-    $customerAddress->setFirstName("Ellen");
-    $customerAddress->setLastName("Johnson");
-    $customerAddress->setCompany("Souveniropolis");
-    $customerAddress->setAddress("14 Main Street");
-    $customerAddress->setCity("Pecan Springs");
-    $customerAddress->setState("TX");
-    $customerAddress->setZip("44628");
+    $customerAddress->setFirstName($user->name);
+    // $customerAddress->setLastName("Johnson");
+    $customerAddress->setCompany($user->userBasic->firm);
+    // $customerAddress->setAddress("14 Main Street");
+    $customerAddress->setCity($user->userBasic->city);
+    $customerAddress->setState($user->userBasic->state);
+    $customerAddress->setZip($user->userBasic->zipcode);
     $customerAddress->setCountry("USA");
 
     // Set the customer's identifying information
     $customerData = new AnetAPI\CustomerDataType();
     $customerData->setType("individual");
-    $customerData->setId("99999456654");
-    $customerData->setEmail("EllenJohnson@example.com");
+    $customerData->setId($user->id);
+    $customerData->setEmail($user->email);
 
     // Add values for transaction settings
     $duplicateWindowSetting = new AnetAPI\SettingType();
