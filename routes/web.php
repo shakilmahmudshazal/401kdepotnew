@@ -75,6 +75,11 @@ Route::post('/edit-quotation/{id}','QuotationRequestController@edit');
 Route::get('/quotationRequestApproved/{id}','QuotationRequestController@approve');
 Route::get('/quotationRequestCancel/{id}','QuotationRequestController@cancel');
 Route::get('/quotationRequestCancelUser/{id}','QuotationRequestController@cancelUser');
+Route::get('/submitRequest','QuotationRequestNullController@create');
+Route::post('/submitRequest','QuotationRequestNullController@store');
+
+Route::get('assignUser/{id}','QuotationRequestNullController@showAssignForm');
+Route::post('/assignUser/{id}','QuotationRequestNullController@assignUser');
 
 
 

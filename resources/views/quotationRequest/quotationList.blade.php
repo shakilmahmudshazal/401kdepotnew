@@ -14,6 +14,10 @@ Here is all qutoation Request
    <br>
    email: {{$request->email}}
    <br>
+   Advisor id: {{$request->user_id}}
+   <br>
+   email: {{$request->email}}
+   <br>
    Phone: {{$request->phone}}
    <br>
    city: {{$request->city}}
@@ -46,7 +50,13 @@ Here is all qutoation Request
 
    @endif
    
-   <a href="#exampleModal" data-toggle="modal" data-target="#exampleModal" onclick="loadModalEdit('edit-quotation','{{$request->id}}')">Edit</a>  
+   <a href="#exampleModal" data-toggle="modal" data-target="#exampleModal" onclick="loadModalEdit('edit-quotation','{{$request->id}}')">Edit</a>
+
+   @if(empty($request->user_id))
+
+   <a href="#exampleModal" data-toggle="modal" data-target="#exampleModal" onclick="loadModalEdit('assignUser','{{$request->id}}')">Assign Advisor</a>
+   @endif
+
     
 
    <a href="/quotationRequestCancel/{{$request->id}}">Cancel</a> 

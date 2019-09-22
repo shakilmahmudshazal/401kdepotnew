@@ -6,7 +6,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="collapsibleNavbar">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link" href="#">Resources</a>
                         </li>
                         <li class="nav-item">
@@ -14,9 +14,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Help</a>
-                        </li>
+                        </li> -->
                         <li class="nav-item">
-                            <a class="nav-link" href="#">For Advisors</a>
+                            <a class="nav-link" href="/submitRequest">Submit Request</a>
                         </li>
                         @guest
 
@@ -28,9 +28,20 @@
                         </li>
                         @else
 
-                         <li class="nav-item">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/home">Dashboard</a>
+                        </li>
+
+                         <li class="nav-item"> 
                             <a class="nav-link" href="/showProfile">{{ Auth::user()->name }}</a>
                         </li>
+                         <li class="nav-item">
+                            <a class="nav-link" href="/editProfile">Profile Edit</a></li>
+
+                            <li class="nav-item">
+                            <a class="nav-link" href="/quotationRequest">All request</a></li>
+
+
                          <li class="nav-item">
                            <a class="nav-link" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

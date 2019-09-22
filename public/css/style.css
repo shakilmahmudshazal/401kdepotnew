@@ -15,7 +15,7 @@
 }
 
 .navbar {
-    background-color: wheat;
+    background-color: green;
 }
 
 .navbar-nav > li > a {
@@ -284,6 +284,26 @@ footer .section-one a {
     background-color: black;
     font-size: 16px;
 }
-#copyright p{
+
+#copyright p {
     color: white;
 }
+
+
+
+
+/*
+.........................
+End Index css
+.........................
+Start Edit profile css
+.........................
+*/
+
+
+
+#profile-edit ,#notification{
+    margin-top: 70px;
+    padding: 40px 0;
+}
+

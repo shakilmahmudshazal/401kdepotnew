@@ -4,11 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\quotationRequest;
+use App\credit;
 use Redirect;
+use DB;
 
 class QuotationRequestNullController extends Controller
 {
     //
+
+    public function create()
+    {
+        return view('quotationRequest.submitRequest');
+    }
     public function store(Request $request)
     {
     	$this->validate($request,[
@@ -44,6 +51,30 @@ class QuotationRequestNullController extends Controller
 
 
           return Redirect::back()->with('message','Operation Successful !');
+
+
+    }
+
+    public function showAssignForm($id)  
+    {
+        $request= quotationRequest::find($id);
+        return view('quotationRequest.assignUser',compact('request'));
+    }
+
+    public function assignUser($id)
+    {
+        $request= quotationRequest::find($id);
+        $request->user_id=request('user_id');
+        
+        $request->save();
+
+        $id=DB::table('credits')->where('user_id',request('user_id'))->first()->id;
+
+        $credit= credit::find($id);
+        $credit->credit= $credit->credit -1;
+        $credit->save();
+
+        return Redirect::back()->with('message','Successful');
 
 
     }
