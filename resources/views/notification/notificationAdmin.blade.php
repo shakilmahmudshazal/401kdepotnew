@@ -11,7 +11,7 @@
                         <div class="container">
                             <ul class="list-group">
 
-                                @foreach($user->notificationUser as $notification)
+                                @foreach($notification as $notification)
                                 
 
                                 <a href="{{$notification->link}}" class="list-group-item dismiss">

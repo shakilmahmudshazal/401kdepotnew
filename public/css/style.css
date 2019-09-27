@@ -15,7 +15,7 @@
 }
 
 .navbar {
-    background-color: green;
+    background-color: white;
 }
 
 .navbar-nav > li > a {
@@ -55,12 +55,14 @@
 }
 
 
+/*
 .sign-up-btn {
     border: 2px solid white;
     margin-top: 4px;
     padding: 4px 8px !important;
     border-radius: 3px;
 }
+*/
 
 .content h1 {
     padding-top: 150px;
@@ -296,14 +298,5 @@ footer .section-one a {
 .........................
 End Index css
 .........................
-Start Edit profile css
-.........................
 */
-
-
-
-#profile-edit ,#notification{
-    margin-top: 70px;
-    padding: 40px 0;
-}
 

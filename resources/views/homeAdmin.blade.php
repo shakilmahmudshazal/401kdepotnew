@@ -11,7 +11,7 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/"><img src="{{asset('images/logo.png')}}" alt=""></a>
+            <a class="navbar-brand" href="#"><img src="{{asset('images/logo.png')}}" alt=""></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                 <i class="fa fa-bars" style="font-size:24px;"></i>
             </button>
@@ -28,7 +28,7 @@
                             </div>
                         </form>
                     </li>
-                   <li class="nav-item dropdown no-arrow mx-1">
+                    <li class="nav-item dropdown no-arrow mx-1">
                         <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fa fa-bell fa-fw"></i>
                             <span class="badge badge-danger">9+</span>
@@ -37,12 +37,7 @@
                            <!--  <a class="dropdown-item" href="#">Action</a>
                             <a class="dropdown-item" href="#">Another action</a>
                             <div class="dropdown-divider"></div> -->
-                            @if( Auth::user()->role_id ==2)
                             <a class="dropdown-item" href="/showAllNotificationAdmin"> see all notification</a>
-                            @else
-                            <a class="dropdown-item" href="/showAllNotification"> See all notification</a>
-                            @endif
-
                         </div>
                     </li>
                     <!-- <li class="nav-item dropdown no-arrow mx-1">
@@ -81,7 +76,6 @@
         </div>
     </nav>
 
-
     <main>
         <div class="container-fluid">
             <div class="row">
@@ -94,7 +88,21 @@
                                     <span>Dashboard</span>
                                 </a>
                             </li>
-                           
+                            <!-- <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fa fa-folder"></i>
+                                    <span>Pages</span>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+                                    <h6 class="dropdown-header">Login Screens:</h6>
+                                    <a class="dropdown-item" href="#">Login</a>
+                                    <a class="dropdown-item" href="#">Register</a>
+                                    <a class="dropdown-item" href="#">Forgot Password</a>
+                                    <div class="dropdown-divider"></div>
+                                    <h6 class="dropdown-header">Other Pages:</h6>
+                                    <a class="dropdown-item" href="#">Blank Page</a>
+                                </div>
+                            </li> -->
                             <li class="nav-item">
                                 <a class="nav-link" href="#">
                                     <i class="fa fa-area-chart"></i>
@@ -115,8 +123,8 @@
                     <div class="row">
                         <div class="col-sm-12 col-md-6 col-lg-3">
                             <div class="card bg-info">
-                                <div class="card-body">New Request! <i class="fa fa-fw fa-comments"></i></div>
-                                <a href="/newQuotationRequest" class="card-footer">
+                                <div class="card-body">All Request<i class="fa fa-fw fa-comments"></i></div>
+                                <a href="/allRequestAdmin" class="card-footer">
                                     <span style="float: left"> View Details</span>
                                     <span style="float: right"><i class="fa fa-arrow-right"></i></span>
                                 </a>
@@ -124,8 +132,8 @@
                         </div>
                         <div class="col-sm-12 col-md-6 col-lg-3">
                             <div class="card bg-warning">
-                                <div class="card-body">All Request <i class="fa fa-fw fa-comments"></i></div>
-                                <a href="/allQuotationRequest" class="card-footer">
+                                <div class="card-body">New Request! <i class="fa fa-fw fa-comments"></i></div>
+                                <a href="/newRequestAdmin" class="card-footer">
                                     <span style="float: left"> View Details</span>
                                     <span style="float: right"><i class="fa fa-arrow-right"></i></span>
                                 </a>
@@ -133,22 +141,22 @@
                         </div>
                         <div class="col-sm-12 col-md-6 col-lg-3">
                             <div class="card bg-secondary">
-                                <div class="card-body">Paid Request <i class="fa fa-fw fa-comments"></i></div>
-                                <a href="/paidQuotationRequest" class="card-footer">
+                                <div class="card-body">Paid Request! <i class="fa fa-fw fa-comments"></i></div>
+                                <a href="/paidRequestAdmin" class="card-footer">
                                     <span style="float: left"> View Details</span>
                                     <span style="float: right"><i class="fa fa-arrow-right"></i></span>
                                 </a>
                             </div>
                         </div>
-                        <!-- <div class="col-sm-12 col-md-6 col-lg-3">
+                        <div class="col-sm-12 col-md-6 col-lg-3">
                             <div class="card bg-success">
-                                <div class="card-body">6 New Notifications! <i class="fa fa-fw fa-comments"></i></div>
-                                <a href="#" class="card-footer">
+                                <div class="card-body">empty Request! <i class="fa fa-fw fa-comments"></i></div>
+                                <a href="/emptyRequestAdmin" class="card-footer">
                                     <span style="float: left"> View Details</span>
                                     <span style="float: right"><i class="fa fa-arrow-right"></i></span>
                                 </a>
                             </div>
-                        </div> -->
+                        </div>
                     </div>
                     <hr>
 
@@ -160,7 +168,7 @@
                             <!--                           Each Individual Orders Start-->
 
                             @foreach($quotationRequest as $request)
-                            @if($request->status_id !=3 && $request->status_id !=1)
+                            @if($request->status_id !=3)
 
                             <div class="col-sm-12 col-md-12 col-lg-12">
                                 <div class="card oder-item">
@@ -182,7 +190,6 @@
                                                     <td>Details</td>
                                                     <td>{{$request->details}}</td>
                                                 </tr>
-                                                @if(!empty($request->invoice->transaction))
                                                 <tr>
                                                     <td>Name</td>
                                                     <td>{{$request->name}}</td>
@@ -200,26 +207,6 @@
                                                     <td>{{$request->city}}, {{$request->state}},{{$request->zipcode}}</td>
                                                 </tr>
 
-                                                @else
-                                                 <tr>
-                                                    <td>Name</td>
-                                                    <td>****</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Email</td>
-                                                    <td>****</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Phone</td>
-                                                    <td>****</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Address</td>
-                                                    <td>****</td>
-                                                </tr>
-                                                @endif
-
-
                                             </tbody>
                                         </table>
                                     </div>
@@ -227,18 +214,20 @@
                                     <div class="card-footer">
                                         <div class="btn-group btn-block">
                                             @if(!empty($request->invoice))
-   <!-- <a class="btn btn-success" href="/quotationRequestApproved/{{$request->id}}">Approve</a>  -->
+   @if($request->status_id<2)
+   <a class="btn btn-success" href="/quotationRequestApproved/{{$request->id}}">Approve</a> 
+   @endif
    @else
 
-   <!-- <a class="btn btn-info" href="/createInvoice/{{$request->id}}">Create Invoice</a> -->
+   <a class="btn btn-info" href="/createInvoice/{{$request->id}}">Create Invoice</a>
 
    @endif
    
-  <!--  <a class="btn btn-warning" href="#exampleModal" data-toggle="modal" data-target="#exampleModal" onclick="loadModalEdit('edit-quotation','{{$request->id}}')">Edit</a> -->
+   <a class="btn btn-warning" href="#exampleModal" data-toggle="modal" data-target="#exampleModal" onclick="loadModalEdit('edit-quotation','{{$request->id}}')">Edit</a>
 
    @if(empty($request->user_id))
 
-   <!-- <a class="btn btn-info" href="#exampleModal" data-toggle="modal" data-target="#exampleModal" onclick="loadModalEdit('assignUser','{{$request->id}}')">Assign Advisor</a> -->
+   <a class="btn btn-info" href="#exampleModal" data-toggle="modal" data-target="#exampleModal" onclick="loadModalEdit('assignUser','{{$request->id}}')">Assign Advisor</a>
    @endif
 
     
@@ -251,7 +240,7 @@
    @endif
    @if(empty($request->invoice->transaction))
    @if(!empty($request->invoice))
-   <a class="btn btn-success" href="/pay/{{$request->invoice->id}}"> Pay</a>
+  <!--  <a class="btn btn-success" href="/pay/{{$request->invoice->id}}"> Pay</a> -->
    @endif
    @endif
    
@@ -294,7 +283,7 @@
                         <div class="container">
                             <ul class="list-group">
 
-                                @foreach($user->notificationUser as $notification)
+                                @foreach($notification as $notification)
                                 
 
                                 <a href="#" class="list-group-item dismiss">

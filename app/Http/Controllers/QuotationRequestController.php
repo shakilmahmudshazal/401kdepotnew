@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\quotationRequest;
 use App\User;
+use App\notificationUser;
 
 use Redirect;
 
@@ -101,7 +102,15 @@ class QuotationRequestController extends Controller
         $request->status_id=2;
         $request->save();
 
+        $notification= notificationUser::create([
+            'details'=> ' your request has been approved',
+            'user_id'=>$request->user_id,
+            'link'=>'/home'
+
+        ]);
+
         return Redirect::back()->with('message','Successful');
+
 
 
 
@@ -128,6 +137,57 @@ class QuotationRequestController extends Controller
 
 
     }
+
+    public function showNewRequest() 
+    {
+        $user= User::find(auth()->id());
+        // return $user->quotationRequest;
+
+        return view('quotationRequest.advisor.newRequest',compact("user"));
+        
+    }
+    public function showAllRequest() 
+    {
+        $user= User::find(auth()->id());
+        // return $user->quotationRequest;
+
+        return view('quotationRequest.advisor.allRequest',compact("user"));
+        
+    }
+    public function showPaidRequest() 
+    {
+        $user= User::find(auth()->id());
+        // return $user->quotationRequest;
+
+        return view('quotationRequest.advisor.paidRequest',compact("user"));
+        
+    }
+
+    public function showAllRequestAdmin()
+    {
+        $quotationRequest= quotationRequest::all();
+
+        return view('quotationRequest.admin.allRequest',compact('quotationRequest'));
+    }
+    public function showNewRequestAdmin()
+    {
+        $quotationRequest= quotationRequest::where('status_id','1')->get();
+        // return $quotationRequest;
+
+        return view('quotationRequest.admin.newRequest',compact('quotationRequest'));
+    }
+    public function showPaidRequestAdmin()
+    {
+        $quotationRequest= quotationRequest::all();
+
+        return view('quotationRequest.admin.paidRequest',compact('quotationRequest'));
+    }
+    public function showEmptyRequestAdmin()
+    {
+        $quotationRequest= quotationRequest::all();
+
+        return view('quotationRequest.admin.emptyRequest',compact('quotationRequest'));
+    } 
 
 
 }

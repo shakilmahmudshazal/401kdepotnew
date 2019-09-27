@@ -23,6 +23,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+
 Auth::routes();
 Route::get('/logout', 'UserController@logout');
 Route::get('/home', 'HomeController@index')->name('home');
@@ -81,6 +82,18 @@ Route::post('/submitRequest','QuotationRequestNullController@store');
 Route::get('assignUser/{id}','QuotationRequestNullController@showAssignForm');
 Route::post('/assignUser/{id}','QuotationRequestNullController@assignUser');
 
+//userPages
+Route::get('/newQuotationRequest','QuotationRequestController@showNewRequest');
+Route::get('/allQuotationRequest','QuotationRequestController@showAllRequest');
+Route::get('/paidQuotationRequest','QuotationRequestController@showPaidRequest');
+
+//admin
+Route::get('/allRequestAdmin','QuotationRequestController@showAllRequestAdmin');
+Route::get('/newRequestAdmin','QuotationRequestController@showNewRequestAdmin');
+Route::get('/paidRequestAdmin','QuotationRequestController@showPaidRequestAdmin');
+Route::get('/emptyRequestAdmin','QuotationRequestController@showEmptyRequestAdmin');
+
+
 
 
 //payment
@@ -106,6 +119,11 @@ Route::post('/autocomplete/fetch', 'AutocompleteController@fetch')->name('autoco
 Route::get('/buyCredit','CreditController@create');
 Route::post('/buyCredit/{id}','CreditController@chargeCreditCard');
 
+
+//notification
+
+Route::get('/showAllNotificationAdmin','NotificationAdminController@showAll');
+Route::get('/showAllNotification','NotificationUserController@show');
 
 
 

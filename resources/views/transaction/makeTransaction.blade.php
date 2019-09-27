@@ -1,38 +1,50 @@
-@extends('layouts.app')
+@extends('layouts.master')
 @section('content')
 
-<form method="post" action="/pay/{{$invoice->id}}">
+<div class="col-8 ">
+	<h2>Set your credentials </h2>
+	<div >
+	<form method="post" action="/pay/{{$invoice->id}}">
 	@csrf
 
-	<div>
+	<div class="form-group">
 		<label>Your Credit Card:</label>
-		<input type="text" name="creditCard" >
+		<input class="form-control" type="text" name="creditCard" >
 
 
 
 	</div>
-	<div>
+	<div class="form-group">
 		<label>Your Credit Expire date:</label>
-		<input type="month" id="exp" name="exp"
+		<input class="form-control" type="month" id="exp" name="exp"
        min="2019-09" value="">
 
 		
 
 	</div>
-	<div>
+	<div class="form-group">
 		<label>CVV:</label>
-		<input type="text" name="code" >
+		<input class="form-control" type="text" name="code" >
+
+
+
+	</div>
+	<div class="form-group">
+		<input class="form-control btn btn-success" type="submit" name="submit" value="confirm">
 
 
 
 	</div>
 
-	<input type="submit" name="submit" value="confirm">
+	
 	
 	
 
 
 </form>
+
+</div>
+</div>
 
 
 

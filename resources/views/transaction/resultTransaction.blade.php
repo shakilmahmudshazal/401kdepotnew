@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Transace Test</title>
-</head>
-<body>
- 
+@exteneds('layouts.master')
+@section('content')
  
  <ul>
      <li> <h1>Transaction was </h1></li>
@@ -16,14 +10,13 @@
      
      
  </ul>
+ @endsection
   
   
    
    
    
     
-</body>
-</html>
 
 
 

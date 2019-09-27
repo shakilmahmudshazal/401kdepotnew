@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\invoice;
 use App\transaction;
 use App\User;
+use App\notificationAdmin;
 //require 'vendor/autoload.php'; 
 use net\authorize\api\contract\v1 as AnetAPI;
 use net\authorize\api\controller as AnetController;
@@ -137,6 +138,12 @@ class TransactionController extends Controller
 
 
                 ]);
+                     $notification= notificationAdmin::create([
+                        'details'=> ' a transaction has been done',
+                        
+                        'link'=>'/showInvoice/'.$invoice->id
+
+                    ]);
                     return redirect('/payresult/'.$transaction->id);
 
 

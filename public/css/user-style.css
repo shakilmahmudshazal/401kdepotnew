@@ -1,0 +1,35 @@
+@font-face {
+    font-family: lato;
+    src: url(../fonts/Lato-Regular.ttf);
+}
+*{
+    font-family: lato;
+}
+.navbar-nav {
+    padding-top: 15px;
+}
+
+main {
+    margin-top: 60px;
+}
+
+#user-sidebar {
+    background-color: #343A50;
+}
+.card a{
+    color: #212529;
+    text-decoration: none;
+    display: block;
+}
+.card{
+    margin-bottom: 10px;
+}
+.oder-item{
+    background-color: #F1F1F1;
+}
+.oder-item td{
+    text-align: justify;
+}
+.notifications-area a{
+    text-decoration: none;
+}
