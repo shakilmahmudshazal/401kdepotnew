@@ -9,6 +9,11 @@ use App\userEducation;
 use Redirect;
 class UserEducationController extends Controller
 {
+    public function __construct()
+    {
+       $this->middleware('auth');
+       // ->except(['index','show','showall']);
+    }
     public function addEducation(){
     	return view('user.education.addEducation');
     }

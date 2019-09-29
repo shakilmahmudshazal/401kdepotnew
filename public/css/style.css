@@ -34,7 +34,6 @@
 
 
 #home {
-    background-image: url(../images/homepage-header.png);
     background-position: 100%;
     background-repeat: no-repeat;
     background-size: cover;
@@ -131,19 +130,15 @@
 
 .cat-item:nth-child(1) {
 
-    background-image: url(../images/category-group-financial.jpg);
 }
 
 .cat-item:nth-child(2) {
-    background-image: url(../images/category-group-estate.jpg);
 }
 
 .cat-item:nth-child(3) {
-    background-image: url(../images/category-group-investment.jpg);
 }
 
 .cat-item:nth-child(4) {
-    background-image: url(../images/category-group-risk.jpg);
 }
 
 .cat-item:nth-child(1),

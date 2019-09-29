@@ -10,6 +10,12 @@ use Redirect;
 
 class UserProfessionalDesignationController extends Controller
 {
+    public function __construct()
+    {
+       $this->middleware('auth');
+       // ->except(['index','show','showall']);
+    }
+    
     public function addProfessionalDesignation(){
     	return view('user.professionalDesignation.addProfessionalDesignation');
     }

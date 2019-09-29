@@ -24,28 +24,10 @@
         @include('layouts.navbar')
 
     </header>
-    <section id="home" style="background-image: url(../images/homepage-header.png);
-">
+    <section id="home">
         <div class="content">
-
-            <h1 class="text-center text-white">
-            @if(!empty($background->headline))
-            {{$background->headline}}
-
-            @else
-            Plan wisely. Live fully.
-            @endif
-
-            </h1>
-            <h4 class="text-center text-white">
-                 @if(!empty($background->details))
-            {{$background->details}}
-            @else
-
-            Find and connect with the right financial advisor for you.
-             @endif
-
-        </h4><br>
+            <h1 class="text-center text-white">Plan wisely. Live fully.</h1>
+            <h4 class="text-center text-white">Find and connect with the right financial advisor for you.</h4><br>
         </div>
         <div class="advisor-heaing">
             <p>Browse Advisors</p>
@@ -234,27 +216,9 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-7 col-md-7">
-                            <h1>
-                                 @if(!empty($background->slideOneHeadline))
-                                    {{$background->slideOneHeadline}}
-
-                                    @else
-                                    Why is hiring a financial advisor a smart investment?
-                                    @endif
-
-                            </h1>
-                            <h3>
-                                @if(!empty($background->slideOneDetails))
-                                    {{$background->slideOneDetails}}
-
-                                    @else
-                                     Because 1.3 million people will file for bankruptcy next year due to unforseen tragedies. Will you be one of them?
-                                    @endif
-
-
-                           </h3>
-                            <a href="@if(!empty($background->slideOneLinks))
-                                    {{$background->slideOneLinks}}@endif" class="btn btn-success">CHECK TO FIND OUT</a>
+                            <h1>Why is hiring a financial advisor a smart investment?</h1>
+                            <h3>Because 1.3 million people will file for bankruptcy next year due to unforseen tragedies. Will you be one of them?</h3>
+                            <a href="" class="btn btn-success">CHECK TO FIND OUT</a>
                         </div>
                         <div class="col-lg-5 col-md-5">
                             <img src="{{asset('images/homepage-carousel-insurance.jpg')}}" alt="">
@@ -265,28 +229,10 @@
             <div class="carousel-item">
                 <div class="container">
                     <div class="row">
-                       <div class="col-lg-7 col-md-7">
-                            <h1>
-                                 @if(!empty($background->slideTwoHeadline))
-                                    {{$background->slideTwoHeadline}}
-
-                                    @else
-                                    Why is hiring a financial advisor a smart investment?
-                                    @endif
-
-                            </h1>
-                            <h3>
-                                @if(!empty($background->slideTwoDetails))
-                                    {{$background->slideTwoDetails}}
-
-                                    @else
-                                     Because 1.3 million people will file for bankruptcy next year due to unforseen tragedies. Will you be one of them?
-                                    @endif
-
-
-                           </h3>
-                            <a href="@if(!empty($background->slideTwoLinks))
-                                    {{$background->slideTwoLinks}}@endif" class="btn btn-success">CHECK TO FIND OUT</a>
+                        <div class="col-lg-7 col-md-7">
+                            <h1>Why is hiring a financial advisor a smart investment?</h1>
+                            <h3>Because 1.3 million people will file for bankruptcy next year due to unforseen tragedies. Will you be one of them?</h3>
+                            <a href="#" class="btn btn-success">CHECK TO FIND OUT</a>
                         </div>
                         <div class="col-lg-5 col-md-5">
                             <img src="{{asset('images/homepage-carousel-investment.jpg')}}" alt="">
@@ -298,27 +244,9 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-7 col-md-7">
-                            <h1>
-                                 @if(!empty($background->slideThreeHeadline))
-                                    {{$background->slideThreeHeadline}}
-
-                                    @else
-                                    Why is hiring a financial advisor a smart investment?
-                                    @endif
-
-                            </h1>
-                            <h3>
-                                @if(!empty($background->slideThreeDetails))
-                                    {{$background->slideThreeDetails}}
-
-                                    @else
-                                     Because 1.3 million people will file for bankruptcy next year due to unforseen tragedies. Will you be one of them?
-                                    @endif
-
-
-                           </h3>
-                            <a href="@if(!empty($background->slideThreeLinks))
-                                    {{$background->slideThreeLinks}}@endif" class="btn btn-success">CHECK TO FIND OUT</a>
+                            <h1>Why is hiring a financial advisor a smart investment?</h1>
+                            <h3 class="text-justify">Because 1.3 million people will file for bankruptcy next year due to unforseen tragedies. Will you be one of them?</h3>
+                            <a href="" class="btn btn-success">CHECK TO FIND OUT</a>
                         </div>
                         <div class="col-lg-5 col-md-5">
                             <img src="{{asset('images/homepage-carousel-selfdirected.png')}}" alt="">
@@ -347,64 +275,27 @@
     <section id="category">
         <div class="container-fluid">
             <div class="row">
-                <div style="    background-image: url(../images/category-group-financial.jpg);
-" class="col-xl-3 col-lg-6 col-md-6 col-sm-12 cat-item">
-                    <h1 class="text-center">
-                              @if(!empty($background->divOneHeadline))
-                                    {{$background->divOneHeadline}}
-
-                                    @else
-                                   FINANCIAL PLANNING
-                                    @endif
-
-
-                    </h1>
+                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 cat-item">
+                    <h1 class="text-center">FINANCIAL PLANNING</h1>
                     <hr>
-                    <p class="text-center">
-                              @if(!empty($background->divOneDetails))
-                                    {{$background->divOneDetails}}
-
-                                    @else
-                                   Retirement Planning<br>
+                    <p class="text-center">Retirement Planning<br>
                         Major Purchases or Life Events<br>
                         Education Funding/Planning<br>
                         Budgeting and Saving<br>
                         Debt Reduction
-                                    @endif
-
-                       
                     </p>
 
                     <a class="btn btn-success form-control" data-toggle="modal" data-target="#myFinancialModal">LEARN MORE</a>
                     <a class="btn btn-success form-control" href="#">FIND A FINANCIAL PLANNER</a>
 
                 </div>
-                <div style="    background-image: url(../images/category-group-estate.jpg);
-" class="col-xl-3 col-lg-6 col-md-6 col-sm-12 cat-item">
-                    <h1 class="text-center">
-                              @if(!empty($background->divTwoHeadline))
-                                    {{$background->divTwoHeadline}}
-
-                                    @else
-                                   FINANCIAL PLANNING
-                                    @endif
-
-
-                    </h1>
+                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 cat-item">
+                    <h1 class="text-center">INVESTMENT MANAGEMENT</h1>
                     <hr>
-                    <p class="text-center">
-                              @if(!empty($background->divTwoDetails))
-                                    {{$background->divTwoDetails}}
-
-                                    @else
-                                   Retirement Planning<br>
-                        Major Purchases or Life Events<br>
-                        Education Funding/Planning<br>
-                        Budgeting and Saving<br>
-                        Debt Reduction
-                                    @endif
-
-                       
+                    <p class="text-center">Portfolio Review<br>
+                        Asset Allocation<br>
+                        Asset Location<br>
+                        401k Advice
                     </p>
 
                     <a class="btn btn-success form-control" data-toggle="modal" data-target="#myInvesmentModal">LEARN MORE</a>
@@ -412,64 +303,26 @@
 
                 </div>
 
-                <div style="    background-image: url(../images/category-group-investment.jpg);
-" class="col-xl-3 col-lg-6 col-md-6 col-sm-12 cat-item">
-                     <h1 class="text-center">
-                              @if(!empty($background->divThreeHeadline))
-                                    {{$background->divThreeHeadline}}
-
-                                    @else
-                                   FINANCIAL PLANNING
-                                    @endif
-
-
-                    </h1>
+                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 cat-item">
+                    <h1 class="text-center">RISK MANAGEMENT</h1>
                     <hr>
-                    <p class="text-center">
-                              @if(!empty($background->divThreeDetails))
-                                    {{$background->divThreeDetails}}
-
-                                    @else
-                                   Retirement Planning<br>
-                        Major Purchases or Life Events<br>
-                        Education Funding/Planning<br>
-                        Budgeting and Saving<br>
-                        Debt Reduction
-                                    @endif
-
-                       
+                    <p class="text-center">Insurance Planning<br>
+                        Income Protection<br>
+                        Income Replacement<br>
+                        Risk Identification and Mitigation
                     </p>
 
                     <a class="btn btn-success form-control" data-toggle="modal" data-target="#myRiskModal">LEARN MORE</a>
                     <a class="btn btn-success form-control">FIND A RISK MANAGER</a>
 
                 </div>
-                <div style="    background-image: url(../images/category-group-risk.jpg);
-" class="col-xl-3 col-lg-6 col-md-6 col-sm-12 cat-item">
-                     <h1 class="text-center">
-                              @if(!empty($background->divFourHeadline))
-                                    {{$background->divFourHeadline}}
-
-                                    @else
-                                   FINANCIAL PLANNING
-                                    @endif
-
-
-                    </h1>
+                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 cat-item">
+                    <h1 class="text-center">ESTATE AND TAX PLANNING</h1>
                     <hr>
-                    <p class="text-center">
-                              @if(!empty($background->divFourDetails))
-                                    {{$background->divFourDetails}}
-
-                                    @else
-                                   Retirement Planning<br>
-                        Major Purchases or Life Events<br>
-                        Education Funding/Planning<br>
-                        Budgeting and Saving<br>
-                        Debt Reduction
-                                    @endif
-
-                       
+                    <p class="text-center">Wealth Preservation<br>
+                        Asset Transfer<br>
+                        Charitable Giving<br>
+                        Tax-loss Harvesting
                     </p>
 
                     <a class="btn btn-success form-control" data-toggle="modal" data-target="#myTaxModal">LEARN MORE</a>

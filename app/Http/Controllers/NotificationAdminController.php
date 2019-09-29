@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 class NotificationAdminController extends Controller
 {
     //
+    public function __construct()
+    {
+       $this->middleware('auth');
+       // ->except(['index','show','showall']);
+    }
 
     public function showAll()
     {

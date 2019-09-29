@@ -8,7 +8,11 @@ use Illuminate\Http\Request;
 class PlaceController extends Controller
 {
 
-    
+    public function __construct()
+    {
+       $this->middleware('auth');
+       // ->except(['index','show','showall']);
+    }
 
     public function create()
     {

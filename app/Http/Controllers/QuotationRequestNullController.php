@@ -11,6 +11,11 @@ use DB;
 class QuotationRequestNullController extends Controller
 {
     //
+    public function __construct()
+    {
+       $this->middleware('auth');
+       // ->except(['index','show','showall']);
+    }
 
     public function create()
     {

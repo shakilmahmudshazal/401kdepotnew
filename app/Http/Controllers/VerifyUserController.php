@@ -10,6 +10,7 @@ use App\Mail\emailConfirmation;
 class VerifyUserController extends Controller
 {
     //
+  
             public function verifyEmail($token)
         {
           $verifyEmail = verifyUser::where('token', $token)->first();

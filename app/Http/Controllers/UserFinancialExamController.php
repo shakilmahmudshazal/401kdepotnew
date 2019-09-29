@@ -11,6 +11,11 @@ use destroy;
 
 class UserFinancialExamController extends Controller
 {
+    public function __construct()
+    {
+       $this->middleware('auth');
+       // ->except(['index','show','showall']);
+    }
     public function addFinancialExam(){
     	return view('user.financialExam.addFinancialExam');
     }

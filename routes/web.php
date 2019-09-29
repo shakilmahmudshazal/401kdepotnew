@@ -12,7 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+	$background= \App\background::first();
+    return view('welcome',compact('background'));
 });
 
 Route::get('/searchPage', 'searchController@create');
@@ -124,6 +125,11 @@ Route::post('/buyCredit/{id}','CreditController@chargeCreditCard');
 
 Route::get('/showAllNotificationAdmin','NotificationAdminController@showAll');
 Route::get('/showAllNotification','NotificationUserController@show');
+
+//background
+
+Route::get('/editBackground','backgroundController@index');
+Route::post('/editBackground','backgroundController@edit');
 
 
 
