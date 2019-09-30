@@ -151,12 +151,12 @@
 
                         <p class="text-center" style="color: #6C757D">Or Sing up with</p>
 
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <div class="btn-group" style="width: 100%; ">
                                 <a href="#" class="btn btn-primary" style="width: 50%;font-size: 14px; border: none;border-radius: 0;"><i class="fa fa-facebook-official"></i> Facebook</a>
                                 <a href="#" class="btn btn-danger" style="width: 50%;font-size: 14px; border: none;border-radius: 0;"><i class="fa fa-envelope"></i> Gmail</a>
                             </div>
-                        </div>
+                        </div> -->
 
 
                     </form>
@@ -197,20 +197,20 @@
                             <input style="border: none; border-radius: 0; background-color: #F0F0F0; color: black" type="password" name="password" class="form-control" placeholder="Password">
                         </div>
 
-                        <p class="text-center" style="color: #6C757D">Haven't any account? <a style="color: blue" href="#" data-toggle="modal" data-target="#mySignUpModal" data-dismiss="modal">Sign Up</a></p>
+                        <p class="text-center" style="color: #6C757D">forgot paasword? <a style="color: blue" href="{{ route('password.request') }}" >Click Here</a></p>
                         <div class="form-group">
                             <input style="font-size: 14px;border: none;border-radius: 0;" type="submit" name="login" value="Log in" class="btn btn-success form-control">
                         </div>
 
                         <p class="text-center" style="color: #6C757D">Or log in with</p>
 
-                        <div class="form-group">
+                       <!--  <div class="form-group">
                             <div class="btn-group" style="width: 100%; ">
                                 <a href="#" class="btn btn-primary" style="width: 50%;font-size: 14px; border: none;border-radius: 0;"><i class="fa fa-facebook-official"></i> Facebook</a>
                                 <a href="#" class="btn btn-danger" style="width: 50%;font-size: 14px; border: none;border-radius: 0;"><i class="fa fa-envelope"></i> Gmail</a>
                             </div>
                         </div>
-
+ -->
 
 
                     </form>

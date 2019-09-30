@@ -158,6 +158,15 @@ if(request('slideThreeHeadline'))
             
             'backgroundImage'=>'required'
         ]);
+        $background= background::first();
+        if(empty($background))
+        {
+            $background=background::create([
+                'id'=>'1'
+
+            ]);
+
+        }
         $backgroundImage = $request->file('backgroundImage');
         // $slug = str_slug($request->profile_name);
         // $slug = str_slug(auth()->id());
@@ -202,6 +211,15 @@ if(request('slideThreeHeadline'))
             
             'slideOneImage'=>'required'
         ]);
+        $background= background::first();
+        if(empty($background))
+        {
+            $background=background::create([
+                'id'=>'1'
+
+            ]);
+
+        }
         $slideOneImage = $request->file('slideOneImage');
         // $slug = str_slug($request->profile_name);
         // $slug = str_slug(auth()->id());
@@ -246,6 +264,15 @@ if(request('slideThreeHeadline'))
             
             'slideTwoImage'=>'required'
         ]);
+        $background= background::first();
+        if(empty($background))
+        {
+            $background=background::create([
+                'id'=>'1'
+
+            ]);
+
+        }
         $slideTwoImage = $request->file('slideTwoImage');
         // $slug = str_slug($request->profile_name);
         // $slug = str_slug(auth()->id());
@@ -290,6 +317,15 @@ if(request('slideThreeHeadline'))
             
             'slideThreeImage'=>'required'
         ]);
+        $background= background::first();
+        if(empty($background))
+        {
+            $background=background::create([
+                'id'=>'1'
+
+            ]);
+
+        }
         $slideThreeImage = $request->file('slideThreeImage');
         // $slug = str_slug($request->profile_name);
         // $slug = str_slug(auth()->id());
@@ -333,6 +369,16 @@ if(request('slideThreeHeadline'))
             
             'divOneImage'=>'required'
         ]);
+
+        $background= background::first();
+        if(empty($background))
+        {
+            $background=background::create([
+                'id'=>'1'
+
+            ]);
+
+        }
         $divOneImage = $request->file('divOneImage');
         // $slug = str_slug($request->profile_name);
         // $slug = str_slug(auth()->id());
@@ -377,6 +423,15 @@ if(request('slideThreeHeadline'))
             
             'divTwoImage'=>'required'
         ]);
+        $background= background::first();
+        if(empty($background))
+        {
+            $background=background::create([
+                'id'=>'1'
+
+            ]);
+
+        }
         $divTwoImage = $request->file('divTwoImage');
         // $slug = str_slug($request->profile_name);
         // $slug = str_slug(auth()->id());
@@ -421,6 +476,17 @@ if(request('slideThreeHeadline'))
             
             'divThreeImage'=>'required'
         ]);
+        
+        $background= background::first();
+        if(empty($background))
+        {
+            $background=background::create([
+                'id'=>'1'
+
+            ]);
+
+        }
+
         $divThreeImage = $request->file('divThreeImage');
         // $slug = str_slug($request->profile_name);
         // $slug = str_slug(auth()->id());
@@ -464,6 +530,15 @@ if(request('slideThreeHeadline'))
             
             'divFourImage'=>'required'
         ]);
+        $background= background::first();
+        if(empty($background))
+        {
+            $background=background::create([
+                'id'=>'1'
+
+            ]);
+
+        }
         $divFourImage = $request->file('divFourImage');
         // $slug = str_slug($request->profile_name);
         // $slug = str_slug(auth()->id());

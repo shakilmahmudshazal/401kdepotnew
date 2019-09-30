@@ -78,7 +78,10 @@ class QuotationRequestController extends Controller
 
     public function showEditForm($id)
     {
+
         $request= quotationRequest::find($id);
+        
+
         return view('quotationRequest.editQuotation',compact('request'));
     }
 

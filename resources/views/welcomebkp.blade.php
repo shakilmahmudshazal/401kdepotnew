@@ -127,11 +127,11 @@
 
                         <p class="text-center" style="color: #6C757D">Or Sing up with</p>
 
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <div class="btn-group" style="width: 100%; ">
                                 <a href="#" class="btn btn-primary" style="width: 50%;font-size: 14px; border: none;border-radius: 0;"><i class="fa fa-facebook-official"></i> Facebook</a>
                                 <a href="#" class="btn btn-danger" style="width: 50%;font-size: 14px; border: none;border-radius: 0;"><i class="fa fa-envelope"></i> Gmail</a>
-                            </div>
+                            </div> -->
                         </div>
 
 

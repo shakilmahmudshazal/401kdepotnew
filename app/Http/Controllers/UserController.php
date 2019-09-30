@@ -11,6 +11,8 @@ use App\userEducation;
 use App\userFinancialExam;
 use App\userProfessionalDesignation;
 use App\userWork;
+use Illuminate\Support\Facades\Hash;
+
 
 
 use Illuminate\Http\Request;
@@ -161,7 +163,44 @@ class UserController extends Controller
     public function allUserList()
     {
         $users=User::all();
-        return view('user.allUserList',compact("users"));
+
+        // if(Auth::user()->role_id ==2)
+        // {
+        
+
+        // }
+        // else
+        // {
+        //     return redirect()->route('welcome');
+        // }
+        return view('user.allUserList',compact("users")); 
+    }
+
+    public function editPasswordIndex(){
+        return view('auth.passwords.editPassword');
+    }
+
+    public function editPassword()
+    {
+        $user= User::find(auth()->id());
+        $oldPassword= request('oldPassword');
+
+        $newPassword= request('newPassword');
+        $current_password = Auth::User()->password;  
+        if(Hash::check($oldPassword, $current_password))
+        {
+            $newPassword=Hash::make($newPassword);
+            $user->password=$newPassword;
+            $user->save();
+            return redirect()->home(); 
+
+        }
+        else
+        {
+            return redirect()->back()->withErrors([ 'Operation Failed']); 
+
+        }
+
     }
 
 }

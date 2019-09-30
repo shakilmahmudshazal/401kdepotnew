@@ -14,7 +14,7 @@
 Route::get('/', function () {
 	$background= \App\background::first();
     return view('welcome',compact('background'));
-});
+})->name('welcome');
 
 Route::get('/searchPage', 'searchController@create');
 // Route::post('/search', 'searchController@search');
@@ -32,7 +32,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 //user
-Route::get('/allUserList', 'UserController@allUserList');
+
+Route::get('/allUserList', 'UserController@allUserList')->middleware('admin');
 Route::get('/showProfile', 'UserController@showProfile');
 Route::get('/editProfile', 'UserController@editProfile');
 Route::post('/updateProfile', 'UserController@updateProfile');
@@ -72,17 +73,17 @@ Route::get('/delete-UserWork/{id}','UserWorkController@deleteWork');
 //quotaRequest
 Route::post('/sendQuotaionRequest/{id}','QuotationRequestController@store');
 Route::get('quotationRequest','QuotationRequestController@show');
-Route::get('edit-quotation/{id}','QuotationRequestController@showEditForm');
+Route::get('edit-quotation/{id}','QuotationRequestController@showEditForm')->middleware('admin');
 Route::post('/edit-quotation/{id}','QuotationRequestController@edit');
-Route::get('/quotationRequestApproved/{id}','QuotationRequestController@approve');
-Route::get('/quotationRequestSendToAdvisor/{id}','QuotationRequestController@sendToAdvisor');
+Route::get('/quotationRequestApproved/{id}','QuotationRequestController@approve')->middleware('admin');
+Route::get('/quotationRequestSendToAdvisor/{id}','QuotationRequestController@sendToAdvisor')->middleware('admin');
 
 Route::get('/quotationRequestCancel/{id}','QuotationRequestController@cancel');
 Route::get('/quotationRequestCancelUser/{id}','QuotationRequestController@cancelUser');
 Route::get('/submitRequest','QuotationRequestNullController@create');
 Route::post('/submitRequest','QuotationRequestNullController@store');
 
-Route::get('assignUser/{id}','QuotationRequestNullController@showAssignForm');
+Route::get('assignUser/{id}','QuotationRequestNullController@showAssignForm')->middleware('admin');
 Route::post('/assignUser/{id}','QuotationRequestNullController@assignUser');
 
 //userPages
@@ -91,10 +92,10 @@ Route::get('/allQuotationRequest','QuotationRequestController@showAllRequest');
 Route::get('/paidQuotationRequest','QuotationRequestController@showPaidRequest');
 
 //admin
-Route::get('/allRequestAdmin','QuotationRequestController@showAllRequestAdmin');
-Route::get('/newRequestAdmin','QuotationRequestController@showNewRequestAdmin');
-Route::get('/paidRequestAdmin','QuotationRequestController@showPaidRequestAdmin');
-Route::get('/emptyRequestAdmin','QuotationRequestController@showEmptyRequestAdmin');
+Route::get('/allRequestAdmin','QuotationRequestController@showAllRequestAdmin')->middleware('admin');
+Route::get('/newRequestAdmin','QuotationRequestController@showNewRequestAdmin')->middleware('admin');
+Route::get('/paidRequestAdmin','QuotationRequestController@showPaidRequestAdmin')->middleware('admin');
+Route::get('/emptyRequestAdmin','QuotationRequestController@showEmptyRequestAdmin')->middleware('admin');
 
 
 
@@ -106,12 +107,12 @@ Route::post('/pay/{id}','TransactionController@chargeCreditCard');
 Route::get('/payresult/{id}','TransactionController@result');
 
 //invoice
-Route::get('/createInvoice/{id}','InvoiceController@create');
+Route::get('/createInvoice/{id}','InvoiceController@create')->middleware('admin');
 Route::post('/createInvoice/{id}','InvoiceController@store');
 Route::get('/showInvoice/{id}','InvoiceController@show');
 Route::get('/showInvoiceList','InvoiceController@show');
 //place
-Route::get('/placeCreate','PlaceController@create');
+Route::get('/placeCreate','PlaceController@create')->middleware('admin');
 Route::post('/savePlace','PlaceController@store');
 Route::get('/viewPlace','PlaceController@view');
 
@@ -125,12 +126,12 @@ Route::post('/buyCredit/{id}','CreditController@chargeCreditCard');
 
 //notification
 
-Route::get('/showAllNotificationAdmin','NotificationAdminController@showAll');
+Route::get('/showAllNotificationAdmin','NotificationAdminController@showAll')->middleware('admin');
 Route::get('/showAllNotification','NotificationUserController@show');
 
 //background
 
-Route::get('/editBackground','backgroundController@index');
+Route::get('/editBackground','backgroundController@index')->middleware('admin');
 Route::post('/editBackground','backgroundController@edit');
 Route::post('/saveBackgroundImage','backgroundController@saveBackgroundImage');
 
@@ -145,11 +146,16 @@ Route::post('/saveDivThreeImage','backgroundController@saveDivThreeImage');
 Route::post('/saveDivFourImage','backgroundController@saveDivFourImage');
 
 //reset all
-Route::post('/resetBackground','backgroundController@reset');
+Route::post('/resetBackground','backgroundController@reset')->middleware('admin');
 
 //service
-Route::get('/addService','UserServiceController@index');
+Route::get('/addService','UserServiceController@index')->middleware('admin');
 Route::post('/addService','UserServiceController@add');
+
+Route::get('/editPassword','UserController@editPasswordIndex');
+Route::post('/editPassword','UserController@editPassword');
+
+Route::get('/changePassword','HomeController@showChangePasswordForm');
 
 
 
