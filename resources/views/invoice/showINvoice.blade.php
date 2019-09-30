@@ -88,7 +88,7 @@
                                     	
                                     		@if(!empty($invoice->transaction)) 
                                     		@else 
-                                    		<a class="btn btn-success" href="">Pay Now</a>
+                                    		<a class="btn btn-success" href="/pay/{{$invoice->id}}">Pay Now</a>
                                     		@endif
 
 

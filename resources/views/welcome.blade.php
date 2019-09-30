@@ -24,7 +24,13 @@
         @include('layouts.navbar')
 
     </header>
-    <section id="home" style="background-image: url(../images/homepage-header.png);
+    <section id="home" style="background-image: url(
+        @if(!empty($background->backgroundImage))
+            {{asset('uploads/backgroundImage/'.$background->backgroundImage)}}
+            @else
+
+        ../images/homepage-header.png);
+@endif
 ">
         <div class="content">
 
@@ -257,7 +263,13 @@
                                     {{$background->slideOneLinks}}@endif" class="btn btn-success">CHECK TO FIND OUT</a>
                         </div>
                         <div class="col-lg-5 col-md-5">
-                            <img src="{{asset('images/homepage-carousel-insurance.jpg')}}" alt="">
+                            <img src=" @if(!empty($background->slideOneImage))
+            {{asset('uploads/backgroundImage/'.$background->slideOneImage)}}
+            @else
+            {{asset('images/homepage-carousel-insurance.jpg')}}
+            @endif
+
+            " alt="">
                         </div>
                     </div>
                 </div>
@@ -289,7 +301,12 @@
                                     {{$background->slideTwoLinks}}@endif" class="btn btn-success">CHECK TO FIND OUT</a>
                         </div>
                         <div class="col-lg-5 col-md-5">
-                            <img src="{{asset('images/homepage-carousel-investment.jpg')}}" alt="">
+                            <img src="@if(!empty($background->slideTwoImage))
+            {{asset('uploads/backgroundImage/'.$background->slideTwoImage)}}
+            @else
+                            {{asset('images/homepage-carousel-investment.jpg')}}
+                            @endif
+                            " alt="">
                         </div>
                     </div>
                 </div>
@@ -321,7 +338,12 @@
                                     {{$background->slideThreeLinks}}@endif" class="btn btn-success">CHECK TO FIND OUT</a>
                         </div>
                         <div class="col-lg-5 col-md-5">
-                            <img src="{{asset('images/homepage-carousel-selfdirected.png')}}" alt="">
+                            <img src="@if(!empty($background->slideThreeImage))
+            {{asset('uploads/backgroundImage/'.$background->slideThreeImage)}}
+            @else
+                            {{asset('images/homepage-carousel-selfdirected.png')}}
+                            @endif
+                            " alt="">
                         </div>
                     </div>
                 </div>
@@ -347,7 +369,13 @@
     <section id="category">
         <div class="container-fluid">
             <div class="row">
-                <div style="    background-image: url(../images/category-group-financial.jpg);
+                <div style="    background-image: url(
+                    @if(!empty($background->divOneImage))
+            {{asset('uploads/backgroundImage/'.$background->divOneImage)}}
+            @else
+                    ../images/category-group-financial.jpg
+                    @endif
+                    );
 " class="col-xl-3 col-lg-6 col-md-6 col-sm-12 cat-item">
                     <h1 class="text-center">
                               @if(!empty($background->divOneHeadline))
@@ -379,7 +407,13 @@
                     <a class="btn btn-success form-control" href="#">FIND A FINANCIAL PLANNER</a>
 
                 </div>
-                <div style="    background-image: url(../images/category-group-estate.jpg);
+                <div style="    background-image: url(
+                    @if(!empty($background->divTwoImage))
+            {{asset('uploads/backgroundImage/'.$background->divTwoImage)}}
+            @else
+                    ../images/category-group-estate.jpg
+                    @endif
+                    );
 " class="col-xl-3 col-lg-6 col-md-6 col-sm-12 cat-item">
                     <h1 class="text-center">
                               @if(!empty($background->divTwoHeadline))
@@ -412,7 +446,14 @@
 
                 </div>
 
-                <div style="    background-image: url(../images/category-group-investment.jpg);
+                <div style="    background-image: url(
+                    @if(!empty($background->divThreeImage))
+            {{asset('uploads/backgroundImage/'.$background->divThreeImage)}}
+            @else
+
+            ../images/category-group-investment.jpg
+            @endif
+            );
 " class="col-xl-3 col-lg-6 col-md-6 col-sm-12 cat-item">
                      <h1 class="text-center">
                               @if(!empty($background->divThreeHeadline))
@@ -444,7 +485,13 @@
                     <a class="btn btn-success form-control">FIND A RISK MANAGER</a>
 
                 </div>
-                <div style="    background-image: url(../images/category-group-risk.jpg);
+                <div style="    background-image: url(
+                    @if(!empty($background->divFourImage))
+            {{asset('uploads/backgroundImage/'.$background->divFourImage)}}
+            @else
+                    ../images/category-group-risk.jpg
+                    @endif
+                    );
 " class="col-xl-3 col-lg-6 col-md-6 col-sm-12 cat-item">
                      <h1 class="text-center">
                               @if(!empty($background->divFourHeadline))

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\quotationRequest;
 use App\credit;
+use App\User;
 use Redirect;
 use DB;
 
@@ -72,7 +73,16 @@ class QuotationRequestNullController extends Controller
         $request->user_id=request('user_id');
         
         $request->save();
+        $user=User::find(request('user_id'));
 
+
+        if(empty($user->credit->credit))
+        {
+            credit::create([
+                'user_id'=>request('user_id')
+
+            ]);
+        }
         $id=DB::table('credits')->where('user_id',request('user_id'))->first()->id;
 
         $credit= credit::find($id);

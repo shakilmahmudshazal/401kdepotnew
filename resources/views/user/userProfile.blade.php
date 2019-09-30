@@ -79,13 +79,20 @@
                         <div class="col-md-4 col-xs-12">
                             <div style="margin-left: 10%">
                                 <img src="{{asset('uploads/profilePic/'.$user->userProfilePic->profile_pic)}}" class="img-thumbnail rounded-circle" alt="breaked" width="150" height="150">
-                            </div> 
+                            </div>  
                         </div>
+                       
+
                         <div class="col-md-8 col-xs-12">
                             <h2 style="margin-top: 30px;color: #5A5A5A;">{{ $user->name}}</h2>
+                            <p class="mb-0">Credit:  @if(!empty($user->credit->credit))
+                        {{$user->credit->credit}}
+                        @else
+                        0
+                        @endif</p>
                             <p class="mb-0">CRD Number: {{$user->userBasic->crdNumber}}</p>
                             <p class="mb-0">Current Firm: <a href="{{$user->userBasic->firmWebsite}}">{{$user->userBasic->firm}}</a></p>
-                            <p>Compensation Model: Fee Only</p>
+                            <p>Compensation Model: {{$user->userBasic->compensationModel}}</p>
                         </div>
                     </div>
                 </div>

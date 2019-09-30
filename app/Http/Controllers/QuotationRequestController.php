@@ -104,11 +104,30 @@ class QuotationRequestController extends Controller
     public function approve($id)
     {
         $request= quotationRequest::find($id);
-        $request->status_id=2;
+        $request->status_id=5;
         $request->save();
 
         $notification= notificationUser::create([
             'details'=> ' your request has been approved',
+            'user_id'=>$request->user_id,
+            'link'=>'/home'
+
+        ]);
+
+        return Redirect::back()->with('message','Successful');
+
+
+
+
+    }
+    public function sendToAdvisor($id)
+    {
+        $request= quotationRequest::find($id);
+        $request->status_id=2;
+        $request->save();
+
+        $notification= notificationUser::create([
+            'details'=> ' you have a new  request ',
             'user_id'=>$request->user_id,
             'link'=>'/home'
 

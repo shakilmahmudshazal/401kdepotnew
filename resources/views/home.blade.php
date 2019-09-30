@@ -31,7 +31,7 @@
                    <li class="nav-item dropdown no-arrow mx-1">
                         <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fa fa-bell fa-fw"></i>
-                            <span class="badge badge-danger">9+</span>
+                            <span class="badge badge-danger"></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
                            <!--  <a class="dropdown-item" href="#">Action</a>
@@ -99,6 +99,11 @@
                                 <a class="nav-link" href="#">
                                     <i class="fa fa-area-chart"></i>
                                     <span>Charts</span></a>
+                            </li>
+                             <li class="nav-item">
+                                <a class="nav-link" href="/buyCredit">
+                                    <i class="fa fa-area-chart"></i>
+                                    <span>Buy Credit</span></a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">
@@ -182,9 +187,9 @@
                                                     <td>Details</td>
                                                     <td>{{$request->details}}</td>
                                                 </tr>
-                                                @if(!empty($request->invoice->transaction))
+                                                 @if($request->status_id ==5)
                                                 <tr>
-                                                    <td>Name</td>
+                                                    <td>Name</td> 
                                                     <td>{{$request->name}}</td>
                                                 </tr>
                                                 <tr>

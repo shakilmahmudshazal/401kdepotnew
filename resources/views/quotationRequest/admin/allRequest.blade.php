@@ -61,8 +61,11 @@
                                     
                                     <div class="card-footer">
                                         <div class="btn-group btn-block">
-                                            @if(!empty($request->invoice))
-   @if($request->status_id<2)
+   @if(!empty($request->invoice))
+   @if($request->status_id<2 && !empty($request->user_id))
+    <a class="btn btn-success" href="/quotationRequestSendToAdvisor/{{$request->id}}">Send to Adviosr</a> 
+    @endif
+   @if(!empty($request->invoice->transaction)&& $request->status_id !=5)
    <a class="btn btn-success" href="/quotationRequestApproved/{{$request->id}}">Approve</a> 
    @endif
    @else

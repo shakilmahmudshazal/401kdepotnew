@@ -111,10 +111,12 @@ class UserController extends Controller
          ]);
     }
     $user->userBasic->website=request('website');
+     $user->userBasic->compensationModel=request('compensationModel');
     $user->userBasic->phone=request('phone');
-    $user->userBasic->phone=request('city');
-    $user->userBasic->phone=request('state');
-    $user->userBasic->phone=request('zipcode');
+    $user->userBasic->city=request('city');
+    $user->userBasic->state=request('state');
+    $user->userBasic->zipcode=request('zipcode');
+
     $user->userBasic->username=request('username');
     
     $user->userBasic->firm=request('firm');

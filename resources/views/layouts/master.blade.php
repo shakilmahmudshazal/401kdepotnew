@@ -31,7 +31,7 @@
                    <li class="nav-item dropdown no-arrow mx-1">
                         <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fa fa-bell fa-fw"></i>
-                            <span class="badge badge-danger">9+</span>
+                            <span class="badge badge-danger"></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
                            <!--  <a class="dropdown-item" href="#">Action</a>
@@ -93,7 +93,7 @@
                                     <span>Dashboard</span>
                                 </a>
                             </li>
-                            <li class="nav-item dropdown">
+                            <!-- <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fa fa-folder"></i>
                                     <span>Pages</span>
@@ -107,12 +107,21 @@
                                     <h6 class="dropdown-header">Other Pages:</h6>
                                     <a class="dropdown-item" href="#">Blank Page</a>
                                 </div>
-                            </li>
+                            </li> -->
                             <li class="nav-item">
                                 <a class="nav-link" href="#">
                                     <i class="fa fa-area-chart"></i>
                                     <span>Charts</span></a>
                             </li>
+
+                            @if( Auth::user()->role_id ==2)
+
+                             <li class="nav-item">
+                                <a class="nav-link" href="/editBackground">
+                                    <i class="fa fa-area-chart"></i>
+                                    <span>Edit Background</span></a>
+                            </li>
+                            @endif
                             <li class="nav-item">
                                 <a class="nav-link" href="#">
                                     <i class="fa fa-table"></i>

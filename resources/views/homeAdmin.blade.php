@@ -31,7 +31,7 @@
                     <li class="nav-item dropdown no-arrow mx-1">
                         <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fa fa-bell fa-fw"></i>
-                            <span class="badge badge-danger">9+</span>
+                            <span class="badge badge-danger"></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
                            <!--  <a class="dropdown-item" href="#">Action</a>
@@ -52,6 +52,7 @@
                             <a class="dropdown-item" href="#">Something else here</a>
                         </div>
                     </li> -->
+
                     <li class="nav-item dropdown no-arrow mx-1">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fa fa-user-circle fa-fw"></i>{{ Auth::user()->name }}
@@ -103,6 +104,29 @@
                                     <a class="dropdown-item" href="#">Blank Page</a>
                                 </div>
                             </li> -->
+                             @if( Auth::user()->role_id ==2)
+
+                             <li class="nav-item">
+                                <a class="nav-link" href="/editBackground">
+                                    <i class="fa fa-area-chart"></i>
+                                    <span>Edit Background</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/addService">
+                                    <i class="fa fa-area-chart"></i>
+                                    <span>Add Service</span></a>
+                            </li><li class="nav-item">
+                                <a class="nav-link" href="/placeCreate">
+                                    <i class="fa fa-area-chart"></i>
+                                    <span>Add City</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/allUserList
+">
+                                    <i class="fa fa-area-chart"></i>
+                                    <span>All user List</span></a>
+                            </li>
+                            @endif
                             <li class="nav-item">
                                 <a class="nav-link" href="#">
                                     <i class="fa fa-area-chart"></i>
@@ -214,7 +238,10 @@
                                     <div class="card-footer">
                                         <div class="btn-group btn-block">
                                             @if(!empty($request->invoice))
-   @if($request->status_id<2)
+   @if($request->status_id<2 && !empty($request->user_id))
+    <a class="btn btn-success" href="/quotationRequestSendToAdvisor/{{$request->id}}">Send to Adviosr</a> 
+    @endif
+   @if(!empty($request->invoice->transaction)&& $request->status_id !=5)
    <a class="btn btn-success" href="/quotationRequestApproved/{{$request->id}}">Approve</a> 
    @endif
    @else

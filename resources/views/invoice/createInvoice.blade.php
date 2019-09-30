@@ -1,23 +1,19 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Create your Invoice</title>
-</head>
-<body>
+@extends('layouts.master')
+@section('content')
 	<form action="/createInvoice/{{$quotation->id}}" method="post">
 		@csrf
 		
-		<div>
+		<div class="form-group">
 			<label> Type amount</label>
-			<input type="text" name="amount">
+			<input class="form-control" type="text" name="amount">
 		</div>
-		<div>
+		<div class="form-group">
 			<label> Issue Date</label>
-			<input type="Date" name="issueDate">
+			<input class="form-control" type="Date" name="issueDate">
 		</div>
-		<div>
+		<div class="form-group">
 			<label> Due Date</label>
-			<input type="Date" name="dueDate">
+			<input class="form-control" type="Date" name="dueDate">
 		</div>
 		<div>
 			<input type="submit" name="submit" value="Create">
@@ -25,6 +21,4 @@
 		
 
 	</form>
-
-</body>
-</html>
+@endsection

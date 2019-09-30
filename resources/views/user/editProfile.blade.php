@@ -74,6 +74,10 @@
                     <input type="text" class="form-control" id="username" name="username"  value="@if(!empty($user->userBasic->username)){{$user->userBasic->username}}@endif" required>
                 </div>
                 <div class="form-group">
+                    <label for="username">Compensation Model :</label>
+                    <input type="text" class="form-control" id="compensationModel" name="compensationModel"  value="@if(!empty($user->userBasic->compensationModel)){{$user->userBasic->compensationModel}}@endif" required>
+                </div>
+                <div class="form-group">
                     <label for="website">Website :</label>
                     <input type="text" class="form-control" name="website"  value="@if(!empty($user->userBasic->website)){{$user->userBasic->website}}@endif">
                 </div>
@@ -95,7 +99,7 @@
                 </div>
                 <div class="form-group">
                     <label for="city">City :</label>
-                    <input type="text" class="form-control" name="City"  value="@if(!empty($user->userBasic->city)){{$user->userBasic->city}}@endif" required>
+                    <input type="text" class="form-control" name="city"  value="@if(!empty($user->userBasic->city)){{$user->userBasic->city}}@endif" required>
                 </div>
                 <div class="form-group">
                     <label for="zipcode">Zipcode :</label>

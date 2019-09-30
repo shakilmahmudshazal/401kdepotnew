@@ -38,7 +38,7 @@
                                                     <td>Details</td>
                                                     <td>{{$request->details}}</td>
                                                 </tr>
-                                                @if(!empty($request->invoice->transaction))
+                                                @if($request->status_id ==5)
                                                 <tr>
                                                     <td>Name</td>
                                                     <td>{{$request->name}}</td>

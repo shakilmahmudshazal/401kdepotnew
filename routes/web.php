@@ -75,6 +75,8 @@ Route::get('quotationRequest','QuotationRequestController@show');
 Route::get('edit-quotation/{id}','QuotationRequestController@showEditForm');
 Route::post('/edit-quotation/{id}','QuotationRequestController@edit');
 Route::get('/quotationRequestApproved/{id}','QuotationRequestController@approve');
+Route::get('/quotationRequestSendToAdvisor/{id}','QuotationRequestController@sendToAdvisor');
+
 Route::get('/quotationRequestCancel/{id}','QuotationRequestController@cancel');
 Route::get('/quotationRequestCancelUser/{id}','QuotationRequestController@cancelUser');
 Route::get('/submitRequest','QuotationRequestNullController@create');
@@ -130,6 +132,25 @@ Route::get('/showAllNotification','NotificationUserController@show');
 
 Route::get('/editBackground','backgroundController@index');
 Route::post('/editBackground','backgroundController@edit');
+Route::post('/saveBackgroundImage','backgroundController@saveBackgroundImage');
+
+Route::post('/saveSlideOneImage','backgroundController@saveSlideOneImage');
+Route::post('/saveSlideTwoImage','backgroundController@saveSlideTwoImage');
+Route::post('/saveSlideThreeImage','backgroundController@saveSlideThreeImage');
+
+
+Route::post('/saveDivOneImage','backgroundController@saveDivOneImage');
+Route::post('/saveDivTwoImage','backgroundController@saveDivTwoImage');
+Route::post('/saveDivThreeImage','backgroundController@saveDivThreeImage');
+Route::post('/saveDivFourImage','backgroundController@saveDivFourImage');
+
+//reset all
+Route::post('/resetBackground','backgroundController@reset');
+
+//service
+Route::get('/addService','UserServiceController@index');
+Route::post('/addService','UserServiceController@add');
+
 
 
 
