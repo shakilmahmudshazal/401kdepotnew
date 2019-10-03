@@ -50,6 +50,11 @@
 
 
         <div class="container">
+          @if (session('message'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('message') }}
+                        </div>
+                    @endif
             <h1 class="text-center">{{$user->name}}</h1>
             <div class="row">
                 <div class="col-md-5 col-sm-12">
@@ -350,11 +355,13 @@
 
                            }
                            else{
-                            $date1 = strtotime($work->endDate);  
-                            $date2 = strtotime(date('Y-m-d'));  
+                             $date1 = strtotime($work->startingDate);  
+                            // $date2 = strtotime(time()); 
+                            // $dateOfBirth = '1994-07-02';
+                            $years = \Carbon\Carbon::parse($date1)->age; 
                               
-                            $diff = abs($date1 - $date2);  
-                            $years = floor($diff / (365*60*60*24));
+                            // $diff = abs($date2 - $date1);  
+                            // $years = floor($diff / (365*60*60*24));
                             echo $years;
 
 

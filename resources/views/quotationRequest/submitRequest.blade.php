@@ -16,6 +16,11 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6 offset-3">
+                @if (session('message'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('message') }}
+                        </div>
+                    @endif
 
                 <div id="request-proposal">
                     <h3>Here submit your Request .we will find a advisror for you</h3>

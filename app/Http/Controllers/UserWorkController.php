@@ -57,7 +57,7 @@ class UserWorkController extends Controller
             //return $e;
         }
 
-        return Redirect::to("/editProfile");
+        return Redirect::to("/editProfile")->with('message','Operation Successful .');
         
     }
 
@@ -101,7 +101,7 @@ class UserWorkController extends Controller
             //return $e;
         }
 
-        return Redirect::to("/editProfile");
+        return Redirect::to("/editProfile")->with('message','Operation Successful .');
     }
 
     public function deleteWork($id){
@@ -110,6 +110,6 @@ class UserWorkController extends Controller
 
         $userWorks->delete();
         
-        return Redirect::to("/editProfile");
+        return Redirect::to("/editProfile")->with('message','Operation Successful .');
     }
 }

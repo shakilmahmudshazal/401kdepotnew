@@ -1,5 +1,10 @@
 @extends('layouts.master')
 @section('content')
+@if (session('message'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('message') }}
+                        </div>
+                    @endif
 	<form action="/createInvoice/{{$quotation->id}}" method="post">
 		@csrf
 		

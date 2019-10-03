@@ -25,12 +25,12 @@ class QuotationRequestController extends Controller
     	$user=User::find(auth()->id());
     	if($user->role_id==2)
     	{
-    		$quotationRequest=quotationRequest::where('status_id',1)->get();
+    		$quotationRequest=quotationRequest::orderBy('created_at', 'desc')->where('status_id',1)->get();
             // $quotationRequest=quotationRequest::all();
     	}
     	else
     	{
-    		$quotationRequest=quotationRequest::where('user_id',auth()->id())
+    		$quotationRequest=quotationRequest::orderBy('created_at', 'desc')->where('user_id',auth()->id())
                 ->where('status_id',2)                                                                
                 ->get();
     	}
@@ -71,7 +71,7 @@ class QuotationRequestController extends Controller
          
 
 
-          return Redirect::back()->with('message','Operation Successful !');
+          return Redirect::back()->with('message','Operation Successful .');
 
 
     }
@@ -99,7 +99,7 @@ class QuotationRequestController extends Controller
         $request->zipcode=request('zipcode');
         $request->save();
 
-        return Redirect::back()->with('message','Successful');
+        return Redirect::back()->with('message','Operation Successful .');
 
 
     }
@@ -117,7 +117,7 @@ class QuotationRequestController extends Controller
 
         ]);
 
-        return Redirect::back()->with('message','Successful');
+        return Redirect::back()->with('message','Operation Successful .');
 
 
 
@@ -136,7 +136,7 @@ class QuotationRequestController extends Controller
 
         ]);
 
-        return Redirect::back()->with('message','Successful');
+        return Redirect::back()->with('message','Operation Successful .');
 
 
 
@@ -148,7 +148,7 @@ class QuotationRequestController extends Controller
         $request->status_id=3;
         $request->save();
 
-        return Redirect::back()->with('message','Successful');
+        return Redirect::back()->with('message','Operation Successful .');
 
 
 
@@ -159,7 +159,7 @@ class QuotationRequestController extends Controller
         $request->status_id=4;
         $request->save();
 
-        return Redirect::back()->with('message','Successful');
+        return Redirect::back()->with('message','Operation Successful .');
 
 
 
@@ -169,49 +169,58 @@ class QuotationRequestController extends Controller
     {
         $user= User::find(auth()->id());
         // return $user->quotationRequest;
+        $quotationRequest= quotationRequest::orderBy('created_at', 'desc')
+        ->where('user_id',auth()->id()) 
+        ->get();
 
-        return view('quotationRequest.advisor.newRequest',compact("user"));
+        return view('quotationRequest.advisor.newRequest',compact("user",'quotationRequest'));
         
     }
     public function showAllRequest() 
     {
         $user= User::find(auth()->id());
         // return $user->quotationRequest;
+        $quotationRequest= quotationRequest::orderBy('created_at', 'desc')
+        ->where('user_id',auth()->id()) 
+        ->get();
 
-        return view('quotationRequest.advisor.allRequest',compact("user"));
+        return view('quotationRequest.advisor.allRequest',compact("user",'quotationRequest'));
         
     }
     public function showPaidRequest() 
     {
         $user= User::find(auth()->id());
         // return $user->quotationRequest;
+         $quotationRequest= quotationRequest::orderBy('created_at', 'desc')
+        ->where('user_id',auth()->id()) 
+        ->get();
 
-        return view('quotationRequest.advisor.paidRequest',compact("user"));
+        return view('quotationRequest.advisor.paidRequest',compact("user",'quotationRequest'));
         
     }
 
     public function showAllRequestAdmin()
     {
-        $quotationRequest= quotationRequest::all();
+        $quotationRequest= quotationRequest::orderBy('created_at', 'desc')->get();
 
         return view('quotationRequest.admin.allRequest',compact('quotationRequest'));
     }
     public function showNewRequestAdmin()
     {
-        $quotationRequest= quotationRequest::where('status_id','1')->get();
+        $quotationRequest= quotationRequest::orderBy('created_at', 'desc')->where('status_id','1')->get();
         // return $quotationRequest;
 
         return view('quotationRequest.admin.newRequest',compact('quotationRequest'));
     }
     public function showPaidRequestAdmin()
     {
-        $quotationRequest= quotationRequest::all();
+        $quotationRequest= quotationRequest::orderBy('created_at', 'desc')->get();
 
         return view('quotationRequest.admin.paidRequest',compact('quotationRequest'));
     }
     public function showEmptyRequestAdmin()
     {
-        $quotationRequest= quotationRequest::all();
+        $quotationRequest= quotationRequest::orderBy('created_at', 'desc')->get();
 
         return view('quotationRequest.admin.emptyRequest',compact('quotationRequest'));
     } 

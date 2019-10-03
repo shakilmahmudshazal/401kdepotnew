@@ -1,6 +1,11 @@
 @extends('layouts.master')
 
 @section('content')
+@if (session('message'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('message') }}
+                        </div>
+                    @endif
     <h3>Add Place </h3>
     <div class="col-sm-4">
         <form action="/savePlace" method="post">
@@ -49,6 +54,7 @@
       <td>{{$place->city}}</td>
       <td>{{$place->state}}</td>
       <td>{{$place->zipcode}}</td>
+      <td><a class="btn btn-danger" href="/deletePlace/{{$place->id}}">Delete</a></td>
     </tr>
     @endforeach
    

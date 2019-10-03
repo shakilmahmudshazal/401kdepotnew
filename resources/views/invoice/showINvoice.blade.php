@@ -13,9 +13,15 @@
 	<br>
 	<div class="container">
     <div class="row">
+        @if (session('message'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('message') }}
+                        </div>
+                    @endif
         <div class="col-xs-12">
             <div class="text-xs-center">
                 <i class="fa fa-search-plus float-xs-left icon"></i>
+
                 <h2>Invoice for transaction #{{$invoice->id}}</h2>
             </div>
             <hr>

@@ -63,6 +63,6 @@ class UserProfilePicController extends Controller
         
 
 
-       return redirect('/showProfile');
+       return redirect('/showProfile')->with('message','Operation Successful .');
     }
 }

@@ -1,6 +1,10 @@
 @extends('layouts.master')
 @section('content')
-
+@if (session('message'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('message') }}
+                        </div>
+                    @endif
 <form method="post" action="/buyCredit/{{auth()->id()}}">
 	@csrf
 	<div class="form-group">

@@ -11,7 +11,7 @@
                         <div class="container">
                             <ul class="list-group">
 
-                                @foreach($user->notificationUser as $notification)
+                                @foreach($notification as $notification)
                                 
 
                                 <a href="{{$notification->link}}" class="list-group-item dismiss">
@@ -19,7 +19,15 @@
                                     </span>
                                     <span class="ml-2" style="font-weight: bold"></span> <span>{{$notification->details}}</span>
                                     <br>
-                                    <span class="ml-2 text-muted"><i class="fa fa-clock-o"></i> 2h</span>
+                                    <span class="ml-2 text-muted"><i class="fa fa-clock-o"></i> <?php
+
+                                     $years = \Carbon\Carbon::parse($notification->created_at)->diffForHumans(); 
+                                     echo $years;
+
+
+
+
+                                    ?></span>
                                 </a>
                                 @endforeach
                                 

@@ -149,7 +149,7 @@ class TransactionController extends Controller
                         'link'=>'/showInvoice/'.$invoice->id
 
                     ]);
-                    return redirect('/payresult/'.$transaction->id);
+                    return redirect('/payresult/'.$transaction->id)->with('message','Operation Successful .');
 
 
                     # code...

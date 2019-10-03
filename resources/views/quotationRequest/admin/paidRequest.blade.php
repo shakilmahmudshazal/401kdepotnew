@@ -3,7 +3,15 @@
 @section('content')
 
  <div class="col-8  col-sm-8 col-md-9 col-lg-10">
-                    <h1 style="margin-top: 35px">Here is all Quotaion Request</h1>
+                  @if (session('message'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('message') }}
+                        </div>
+                    @endif
+
+
+
+                    <h1 style="margin-top: 35px">Here is all paid Quotaion Request</h1>
                     <hr>
                     
                     <hr>
@@ -53,6 +61,18 @@
                                                 <tr>
                                                     <td>Address</td>
                                                     <td>{{$request->city}}, {{$request->state}},{{$request->zipcode}}</td>
+                                                </tr>
+                                                <tr>
+                                                    
+                                                    <td class="alert alert-success" colspan="2"><?php
+
+                                     $years = \Carbon\Carbon::parse($request->created_at)->diffForHumans(); 
+                                     echo $years;
+
+
+
+
+                                    ?></td>
                                                 </tr>
 
                                             </tbody>

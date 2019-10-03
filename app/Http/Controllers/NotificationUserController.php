@@ -17,6 +17,8 @@ class NotificationUserController extends Controller
     public function show()
     {
     	$user= \App\User::find(auth()->id());
-    	return view('notification.notification',compact('user'));
+        $notification=\App\notificationUser::orderBy('created_at', 'desc')->where('user_id',auth()->id())->get();
+        // return $notification;
+    	return view('notification.notification',compact('user','notification'));
     }
 }

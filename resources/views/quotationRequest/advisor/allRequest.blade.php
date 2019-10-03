@@ -1,6 +1,12 @@
 @extends('layouts.master')
 
 @section('content')
+                   @if (session('message'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('message') }}
+                        </div>
+                    @endif
+
 
  <div class="col-8  col-sm-8 col-md-9 col-lg-10">
                     <h1 style="margin-top: 35px">Here is all Quotaion Request</h1>
@@ -15,7 +21,7 @@
 
                             <!--                           Each Individual Orders Start-->
 
-                            @foreach($user->quotationRequest as $request)
+                            @foreach($quotationRequest as $request)
                             @if($request->status_id !=3 && $request->status_id !=1)
 
                             <div class="col-sm-12 col-md-12 col-lg-12">
@@ -73,7 +79,21 @@
                                                     <td>Address</td>
                                                     <td>****</td>
                                                 </tr>
+
                                                 @endif
+
+                                                <tr>
+                                                    
+                                                    <td class="alert alert-success" colspan="2"><?php
+
+                                     $years = \Carbon\Carbon::parse($request->created_at)->diffForHumans(); 
+                                     echo $years;
+
+
+
+
+                                    ?></td>
+                                                </tr>
 
 
                                             </tbody>

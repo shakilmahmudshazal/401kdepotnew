@@ -62,7 +62,7 @@ class InvoiceController extends Controller
 
          
 
-         return redirect('/showInvoice/'.$invoice->id);
+         return redirect('/showInvoice/'.$invoice->id)->with('message','Operation Successful .');
 
     }
 

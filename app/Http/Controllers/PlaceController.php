@@ -36,7 +36,7 @@ class PlaceController extends Controller
         $place->state=$request->state;
         $place->zipcode=$request->zipcode;
         $place->save();
-        return redirect('/placeCreate');
+        return redirect('/placeCreate')->with('message','Operation Successful .');
 
     }
 
@@ -46,5 +46,15 @@ class PlaceController extends Controller
         $place= place::get();
         return view('place.searchView',compact('place'));
 
+    }
+
+    public function delete($id)
+    {
+                $place= place::find($id);
+                $place->delete();
+
+                return redirect('/placeCreate')->with('message','Operation Successful .');
+
+      
     }
 }

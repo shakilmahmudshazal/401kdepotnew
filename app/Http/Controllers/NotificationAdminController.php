@@ -17,7 +17,7 @@ class NotificationAdminController extends Controller
 
     public function showAll()
     {
-    	$notification= notificationAdmin::all();
+    	$notification= notificationAdmin::orderBy('created_at', 'desc')->get();
     	$user= User::find(auth()->id());
 
     	// return $notification;

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\userService;
+use App\userServiceRelation;
 
 class UserServiceController extends Controller
 {
@@ -21,7 +22,21 @@ class UserServiceController extends Controller
 
     	]);
 
-    	return redirect()->back();
+    	return redirect()->back()->with('message','Operation Successful .');
 
+    }
+
+    public function delete($id)
+    {
+               $service=userService::find($id);
+                $service->delete();
+
+                $userService= userServiceRelation::where('user_service_id',$id)->delete();
+
+
+
+                return redirect('/addService')->with('message','Operation Successful .'); 
+
+      
     }
 }

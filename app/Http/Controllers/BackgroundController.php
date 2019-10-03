@@ -25,7 +25,7 @@ class BackgroundController extends Controller
     public function reset()
     {
         $background= background::truncate();
-        return redirect()->back();
+        return redirect()->back()->with('message','Operation Successful .');
 
     }
 
@@ -145,7 +145,7 @@ if(request('slideThreeHeadline'))
 
     	$background->save();
 
-    	return redirect()->back();
+    	return redirect()->back()->with('message','Operation Successful .');
 
 
     }
@@ -201,7 +201,7 @@ if(request('slideThreeHeadline'))
         
 
 
-       return redirect()->back();
+       return redirect()->back()->with('message','Operation Successful .');
     }
 
     //slide One Image
@@ -254,7 +254,7 @@ if(request('slideThreeHeadline'))
         
 
 
-       return redirect()->back();
+       return redirect()->back()->with('message','Operation Successful .');
     }
 
     //slideTwo
@@ -307,7 +307,7 @@ if(request('slideThreeHeadline'))
         
 
 
-       return redirect()->back();
+       return redirect()->back()->with('message','Operation Successful .');
     }
 
     //slide three
@@ -360,7 +360,7 @@ if(request('slideThreeHeadline'))
         
 
 
-       return redirect()->back();
+       return redirect()->back()->with('message','Operation Successful .');
     }
 //div one image
     public function saveDivOneImage(Request $request){
@@ -413,7 +413,7 @@ if(request('slideThreeHeadline'))
         
 
 
-       return redirect()->back();
+       return redirect()->back()->with('message','Operation Successful .');
     }
 
     //div two
@@ -466,7 +466,7 @@ if(request('slideThreeHeadline'))
         
 
 
-       return redirect()->back();
+       return redirect()->back()->with('message','Operation Successful .');
     }
 
     //div three
@@ -521,7 +521,7 @@ if(request('slideThreeHeadline'))
         
 
 
-       return redirect()->back();
+       return redirect()->back()->with('message','Operation Successful .');
     }
     //div four
      public function saveDivFourImage(Request $request){
@@ -573,6 +573,6 @@ if(request('slideThreeHeadline'))
         
 
 
-       return redirect()->back();
+       return redirect()->back()->with('message','Operation Successful .');
     }
 }

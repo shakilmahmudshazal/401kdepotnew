@@ -178,7 +178,7 @@ class CreditController extends Controller
     $tcode=$tresponse->getResponseCode();
     $status='not defined';
     // return view('transaction.resultTransaction',compact('transaction'));
-    return redirect('/showProfile');
+    return redirect('/showProfile')->with('message','Operation Successful .');
     // return $tresponse;
 
 

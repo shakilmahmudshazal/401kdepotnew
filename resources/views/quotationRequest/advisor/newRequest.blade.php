@@ -3,7 +3,12 @@
 @section('content')
 
  <div class="col-8  col-sm-8 col-md-9 col-lg-10">
-                    <h1 style="margin-top: 35px">Here is all Quotaion Request</h1>
+    @if (session('message'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('message') }}
+                        </div>
+                    @endif
+                    <h1 style="margin-top: 35px">Here is all new Quotaion Requests</h1>
                     <hr>
                     
                     <hr>
@@ -15,7 +20,7 @@
 
                             <!--                           Each Individual Orders Start-->
 
-                            @foreach($user->quotationRequest as $request)
+                            @foreach($quotationRequest as $request)
                             @if($request->status_id !=3 && empty($request->invoice->transaction))
 
                             <div class="col-sm-12 col-md-12 col-lg-12">
@@ -74,6 +79,18 @@
                                                     <td>****</td>
                                                 </tr>
                                                 @endif
+                                                <tr>
+                                                    
+                                                    <td class="alert alert-success" colspan="2"><?php
+
+                                     $years = \Carbon\Carbon::parse($request->created_at)->diffForHumans(); 
+                                     echo $years;
+
+
+
+
+                                    ?></td>
+                                                </tr>
 
 
                                             </tbody>

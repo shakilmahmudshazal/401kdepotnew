@@ -115,11 +115,11 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/addService">
                                     <i class="fa fa-area-chart"></i>
-                                    <span>Add Service</span></a>
+                                    <span>Add/Delete Service</span></a>
                             </li><li class="nav-item">
                                 <a class="nav-link" href="/placeCreate">
                                     <i class="fa fa-area-chart"></i>
-                                    <span>Add City</span></a>
+                                    <span>Add/Delete City</span></a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/allUserList
@@ -143,6 +143,11 @@
                     </div>
                 </div>
                 <div class="col-8  col-sm-8 col-md-9 col-lg-10">
+                    @if (session('message'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('message') }}
+                        </div>
+                    @endif
                     <h1 style="margin-top: 35px">Welcome {{$user->name}}</h1>
                     <hr>
                     <div class="row">

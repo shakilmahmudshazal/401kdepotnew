@@ -1,10 +1,15 @@
 @extends('layouts.master')
 @section('content')
+@if (session('message'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('message') }}
+                        </div>
+                    @endif
 
 <form action="/resetBackground" method="POST">
 	@csrf
 	<div class='form-group'>
-		<input class=" btn btn-danger" type="submit" name="submit" value="Reset All">
+		<input class=" btn btn-danger" type="submit" name="submit" value="Reset All"> <strong>If you click this button every customized design will be vanished.</strong>
 		
 	</div>
 </form>
@@ -121,7 +126,7 @@
 
 
 	<div class="form-group">
-		<input type="submit" name="submit" value="Save">
+		<input class="btn btn-info form-control" type="submit" name="submit" value="Save">
 		
 	</div> 
 

@@ -47,7 +47,7 @@ class UserProfessionalDesignationController extends Controller
             //return $e;
         }
 
-        return Redirect::to("/editProfile");
+        return Redirect::to("/editProfile")->with('message','Operation Successful .');
         
     }
 
@@ -81,7 +81,7 @@ class UserProfessionalDesignationController extends Controller
             //return $e;
         }
 
-        return Redirect::to("/editProfile");
+        return Redirect::to("/editProfile")->with('message','Operation Successful .');
     }
 
     public function deleteProfessionalDesignation( $id){
@@ -90,7 +90,7 @@ class UserProfessionalDesignationController extends Controller
 
         $userProfessionalDesignation->delete();
         
-        return Redirect::to("/editProfile");
+        return Redirect::to("/editProfile")->with('message','Operation Successful .');
     }
     
 }

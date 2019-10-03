@@ -8,7 +8,7 @@ use App\credit;
 use App\User;
 use Redirect;
 use DB;
-
+use App\Mail\quotationRequestAccepted;
 class QuotationRequestNullController extends Controller
 {
     //
@@ -37,7 +37,7 @@ class QuotationRequestNullController extends Controller
 
         //$user= User::find($id);
 
-         quotationRequest::create([
+         $quotationRequest=quotationRequest::create([
             
             'name'=>$request['name'],
             'subject'=>$request['subject'],
@@ -52,11 +52,14 @@ class QuotationRequestNullController extends Controller
             'zipcode'=>$request['zipcode'],
 
          ]);
+         \Mail::to($quotationRequest->email)->send(new quotationRequestAccepted($quotationRequest));
+
+         // $status='operation successful';
 
          
 
 
-          return Redirect::back()->with('message','Operation Successful !');
+          return Redirect::back()->with('message','Your request has been sent successfully');
 
 
     }
@@ -89,7 +92,7 @@ class QuotationRequestNullController extends Controller
         $credit->credit= $credit->credit -1;
         $credit->save();
 
-        return Redirect::back()->with('message','Successful');
+        return Redirect::back()->with('message','Operation successful.');
 
 
     }

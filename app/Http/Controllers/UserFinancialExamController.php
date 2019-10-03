@@ -49,7 +49,7 @@ class UserFinancialExamController extends Controller
             //return $e;
         }
 
-        return Redirect::to("/editProfile");
+        return Redirect::to("/editProfile")->with('message','Operation Successful .');
         
     }
 
@@ -85,7 +85,7 @@ class UserFinancialExamController extends Controller
             //return $e;
         }
 
-        return Redirect::to("/editProfile");
+        return Redirect::to("/editProfile")->with('message','Operation Successful .');
     }
 
 
@@ -95,7 +95,7 @@ public function deleteFinancialExam( $id){
 
         $userFinancialExam->delete();
         
-        return Redirect::to("/editProfile");
+        return Redirect::to("/editProfile")->with('message','Operation Successful .');
     }
 
    

@@ -116,6 +116,11 @@
                     </div>
                 </div>
                 <div class="col-8  col-sm-8 col-md-9 col-lg-10">
+                    @if (session('message'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('message') }}
+                        </div>
+                    @endif
                     <h1 style="margin-top: 35px">Welcome {{$user->name}}</h1>
                     <hr>
                     <div class="row">

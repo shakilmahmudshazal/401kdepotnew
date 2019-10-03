@@ -122,9 +122,13 @@
                         <div class="col-4">
                             <ul>
                                 @foreach($services as $service)
-                                <li>
+                                
+                                    @if(!empty($service->userService->name))
+                                    <li>
                                     <p>{{$service->userService->name}}</p>
-                                </li>
+                                    </li>
+                                    @endif
+                                
                                 @endforeach
                                 
                             </ul>
@@ -285,11 +289,19 @@
 
                            }
                            else{
-                            $date1 = strtotime($work->endDate);  
-                            $date2 = strtotime(time());  
+                            // $date1 = strtotime($work->endDate);  
+                            // $date2 = strtotime(time());  
                               
-                            $diff = abs($date2 - $date1);  
-                            $years = floor($diff / (365*60*60*24));
+                            // $diff = abs($date2 - $date1);  
+                            // $years = floor($diff / (365*60*60*24));
+                            // echo $years;
+                             $date1 = strtotime($work->startingDate);  
+                            // $date2 = strtotime(time()); 
+                            // $dateOfBirth = '1994-07-02';
+                            $years = \Carbon\Carbon::parse($date1)->age; 
+                              
+                            // $diff = abs($date2 - $date1);  
+                            // $years = floor($diff / (365*60*60*24));
                             echo $years;
 
 

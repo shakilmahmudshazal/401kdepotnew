@@ -114,10 +114,14 @@
                         </div>
                         <div class="col-4">
                             <ul>
-                                @foreach($services as $service)
-                                <li>
+                                 @foreach($services as $service)
+                                
+                                    @if(!empty($service->userService->name))
+                                    <li>
                                     <p>{{$service->userService->name}}</p>
-                                </li>
+                                    </li>
+                                    @endif
+                                
                                 @endforeach
                                 
                             </ul>
@@ -278,11 +282,13 @@
 
                            }
                            else{
-                            $date1 = strtotime($work->endDate);  
-                            $date2 = strtotime(time());  
+                            $date1 = strtotime($work->startingDate);  
+                            // $date2 = strtotime(time()); 
+                            // $dateOfBirth = '1994-07-02';
+                            $years = \Carbon\Carbon::parse($date1)->age; 
                               
-                            $diff = abs($date2 - $date1);  
-                            $years = floor($diff / (365*60*60*24));
+                            // $diff = abs($date2 - $date1);  
+                            // $years = floor($diff / (365*60*60*24));
                             echo $years;
 
 
@@ -387,6 +393,12 @@
             <!--            Request Proposal section Start-->
 
             <div class="col-md-12 col-lg-4">
+                @if (session('message'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('message') }}
+                        </div>
+                    @endif
+
 
                 <div id="request-proposal">
                     <h3>Hire {{$user->name}}</h3>

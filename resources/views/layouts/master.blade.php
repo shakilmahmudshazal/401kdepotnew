@@ -108,25 +108,40 @@
                                     <a class="dropdown-item" href="#">Blank Page</a>
                                 </div>
                             </li> -->
-                            <li class="nav-item">
+                            <!-- <li class="nav-item">
                                 <a class="nav-link" href="#">
                                     <i class="fa fa-area-chart"></i>
                                     <span>Charts</span></a>
-                            </li>
+                            </li> -->
 
-                            @if( Auth::user()->role_id ==2)
+                             @if( Auth::user()->role_id ==2)
 
                              <li class="nav-item">
                                 <a class="nav-link" href="/editBackground">
                                     <i class="fa fa-area-chart"></i>
                                     <span>Edit Background</span></a>
                             </li>
-                            @endif
                             <li class="nav-item">
+                                <a class="nav-link" href="/addService">
+                                    <i class="fa fa-area-chart"></i>
+                                    <span>Add/Delete Service</span></a>
+                            </li><li class="nav-item">
+                                <a class="nav-link" href="/placeCreate">
+                                    <i class="fa fa-area-chart"></i>
+                                    <span>Add/Delete City</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/allUserList
+">
+                                    <i class="fa fa-area-chart"></i>
+                                    <span>All user List</span></a>
+                            </li>
+                            @endif
+                            <!-- <li class="nav-item">
                                 <a class="nav-link" href="#">
                                     <i class="fa fa-table"></i>
                                     <span>Tables</span></a>
-                            </li>
+                            </li> -->
                         </ul>
 
                     </div>

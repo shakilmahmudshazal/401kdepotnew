@@ -39,7 +39,7 @@ class UserEducationController extends Controller
 
         
 
-        return Redirect::to("/editProfile");
+        return Redirect::to("/editProfile")->with('message','Operation Successful .');
         
     }
 
@@ -77,7 +77,7 @@ class UserEducationController extends Controller
             //return $e;
         }
 
-        return Redirect::to("/editProfile");
+        return Redirect::to("/editProfile")->with('message','Operation Successful .');
     }
 
     public function deleteUserEducation( $id){
@@ -86,7 +86,7 @@ class UserEducationController extends Controller
 
         $userEducation->delete();
         
-        return Redirect::to("/editProfile");
+        return Redirect::to("/editProfile")->with('message','Operation Successful .');
     }
       
 

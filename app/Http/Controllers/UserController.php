@@ -156,7 +156,7 @@ class UserController extends Controller
              }
 
 
-    return redirect('/showProfile');
+    return redirect('/showProfile')->with('message','Operation Successful .');
 
     }
 
@@ -192,7 +192,7 @@ class UserController extends Controller
             $newPassword=Hash::make($newPassword);
             $user->password=$newPassword;
             $user->save();
-            return redirect()->home(); 
+            return redirect()->home()->with('message','Operation Successful .'); 
 
         }
         else

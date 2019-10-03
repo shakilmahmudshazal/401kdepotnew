@@ -115,6 +115,7 @@ Route::get('/showInvoiceList','InvoiceController@show');
 Route::get('/placeCreate','PlaceController@create')->middleware('admin');
 Route::post('/savePlace','PlaceController@store');
 Route::get('/viewPlace','PlaceController@view');
+Route::get('/deletePlace/{id}','PlaceController@delete')->middleware('admin');
 
  Route::get('/autocomplete', 'AutocompleteController@index');
 Route::post('/autocomplete/fetch', 'AutocompleteController@fetch')->name('autocomplete.fetch');
@@ -131,26 +132,27 @@ Route::get('/showAllNotification','NotificationUserController@show');
 
 //background
 
-Route::get('/editBackground','backgroundController@index')->middleware('admin');
-Route::post('/editBackground','backgroundController@edit');
-Route::post('/saveBackgroundImage','backgroundController@saveBackgroundImage');
+Route::get('/editBackground','BackgroundController@index')->middleware('admin');
+Route::post('/editBackground','BackgroundController@edit');
+Route::post('/saveBackgroundImage','BackgroundController@saveBackgroundImage');
 
-Route::post('/saveSlideOneImage','backgroundController@saveSlideOneImage');
-Route::post('/saveSlideTwoImage','backgroundController@saveSlideTwoImage');
-Route::post('/saveSlideThreeImage','backgroundController@saveSlideThreeImage');
+Route::post('/saveSlideOneImage','BackgroundController@saveSlideOneImage');
+Route::post('/saveSlideTwoImage','BackgroundController@saveSlideTwoImage');
+Route::post('/saveSlideThreeImage','BackgroundController@saveSlideThreeImage');
 
 
-Route::post('/saveDivOneImage','backgroundController@saveDivOneImage');
-Route::post('/saveDivTwoImage','backgroundController@saveDivTwoImage');
-Route::post('/saveDivThreeImage','backgroundController@saveDivThreeImage');
-Route::post('/saveDivFourImage','backgroundController@saveDivFourImage');
+Route::post('/saveDivOneImage','BackgroundController@saveDivOneImage');
+Route::post('/saveDivTwoImage','BackgroundController@saveDivTwoImage');
+Route::post('/saveDivThreeImage','BackgroundController@saveDivThreeImage');
+Route::post('/saveDivFourImage','BackgroundController@saveDivFourImage');
 
 //reset all
-Route::post('/resetBackground','backgroundController@reset')->middleware('admin');
+Route::post('/resetBackground','BackgroundController@reset')->middleware('admin');
 
 //service
 Route::get('/addService','UserServiceController@index')->middleware('admin');
 Route::post('/addService','UserServiceController@add');
+Route::get('/deleteService/{id}','UserServiceController@delete')->middleware('admin');
 
 Route::get('/editPassword','UserController@editPasswordIndex');
 Route::post('/editPassword','UserController@editPassword');
